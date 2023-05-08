@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Product from "../models/ProductModel.js";
 
-
+//Add a new product, for admin dashboard
 export const addProduct = async (req, res) => {
     const newProduct = await Product(req.body);
 
@@ -13,6 +13,7 @@ export const addProduct = async (req, res) => {
     }
 };
 
+//Get all products
 export const allProducts = async (req, res) => {
     try {
         const products = await Product.find();
@@ -22,6 +23,7 @@ export const allProducts = async (req, res) => {
     }
 };
 
+//Get specific product by ID
 export const specificProduct = async (req, res) => {
     const id = req.params.id;
 
@@ -33,6 +35,7 @@ export const specificProduct = async (req, res) => {
     }
 };
 
+//Update product info, for admin dashboard
 export const updateProduct = async (req, res) => {
     const id = req.params.id;
 
@@ -45,6 +48,7 @@ export const updateProduct = async (req, res) => {
     }
 };
 
+//Delete a particular product, for admin dashboard
 export const deleteProduct = async (req, res) => {
     const id = req.params.id;
 
@@ -56,3 +60,6 @@ export const deleteProduct = async (req, res) => {
         res.status(500).json(error);
     }
 };
+
+//Add new review
+export const addReview = async (req, res) => {};

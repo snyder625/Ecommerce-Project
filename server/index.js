@@ -3,9 +3,9 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
-// import orderRoute from './routes/orderRoutes.js'
+import orderRoute from './routes/orderRoutes.js'
 import productRoute from './routes/productRoutes.js'
-// import userRoute from './routes/userRoutes.js'
+import userRoute from './routes/userRoutes.js'
 
 const app = express();
 dotenv.config();
@@ -20,9 +20,9 @@ app.use(cookieParser());
 app.use(express.json());
 // app.use(cors());
 
-// app.use('/user', userRoute)
+app.use('/user', userRoute)
 app.use('/products', productRoute)
-// app.use('/post', orderRoute)
+app.use('/post', orderRoute)
 
 app.use((err, req, res, next) => {
     const status = err.status || 500;

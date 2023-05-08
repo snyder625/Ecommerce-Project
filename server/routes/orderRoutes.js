@@ -1,12 +1,12 @@
 import express from 'express';
-import { addProduct, allProducts, deleteProduct, specificProduct, updateProduct } from '../controllers/productController.js';
+import { getAllOrders, getOrder, getOrderByUser, postOrder } from '../controllers/orderController';
 
 const router = express.Router();
 
-router.get('/', allProducts)
-router.get('/:id', specificProduct)
-router.put('/:id', updateProduct)
-router.delete('/:id', deleteProduct)
-router.post('/', addProduct)
+router.get('/', getAllOrders)
+router.post('/:id', postOrder)
+router.get('/:id', getOrder)
+router.delete('/:userId', getOrderByUser)
+router.post('/', )
 
 export default router
