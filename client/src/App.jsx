@@ -1,24 +1,24 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cart, Dashboard, Home, Menu, Product } from "./pages";
-import Footer from "./components/Footer";
-import Header from "./components/header/Header";
+// import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Navbar />
         <Routes>
           <Route index element={<Home />} />
           <Route path="menu" element={<Menu />} />
           <Route path="cart" element={<Cart />} />
           <Route path="admin" element={<Dashboard />} />
-          <Route path="video">
+          <Route path="product">
             <Route path=":id" element={<Product />} />
           </Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );

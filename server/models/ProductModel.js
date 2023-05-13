@@ -25,7 +25,8 @@ const ProductSchema = new mongoose.Schema({
     },
     extraOptions: {
         type: [{text: {type: String, required: true}, price: {type: Number, required: true}}]
-    }
+    },
+    reviews: [{userId: {type: String}, rating: {type: Number}, description: {type: String}}]
 }, {timestamps: true});
 
 export default mongoose.models.Product || mongoose.model("Product", ProductSchema);

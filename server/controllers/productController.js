@@ -62,4 +62,21 @@ export const deleteProduct = async (req, res) => {
 };
 
 //Add new review
-export const addReview = async (req, res) => {};
+export const addReview = async (req, res) => {
+    const { userId, rating, description } = req.body;
+    try {
+        const product = await Product.findById(req.params.productId);
+        if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+        }
+
+        const newReview = { userId, rating, description };
+        product.reviews.push(newReview);
+
+        await product.save();
+
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+};

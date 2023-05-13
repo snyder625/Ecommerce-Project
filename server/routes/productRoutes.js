@@ -8,6 +8,6 @@ router.get('/:id', specificProduct)
 router.put('/:id', updateProduct)
 router.delete('/:id', deleteProduct)
 router.post('/', addProduct)
-router.put('/review', addReview)
+router.put('/:productId/reviews', addReview)
 
 export default router
