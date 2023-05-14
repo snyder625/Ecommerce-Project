@@ -1,17 +1,22 @@
-import styles from '../../styles/PizzaList.module.css'
-import PizzaCard from '../PizzaCard/PizzaCard';
+import styles from '../styles/PizzaList.module.css'
+// import PizzaCard from '../PizzaCard/PizzaCard';
+import ProductCard from './ProductCard';
 
 const PizzaList = () => {
-    const pizzaList = [{}, {}];
+    const pizzaList = [{}, {}, {}, {}];
   return (
     <div className={styles.container}>
-        <h1 className={styles.title}>THE BEST PIZZA IN THE CITY</h1>
+        <h2 className={styles.title}>THE BEST PIZZA IN THE CITY</h2>
         <p className={styles.desc}>Enjoy authentic pizza made with fresh ingredients and baked to perfection. Vegetarian and gluten-free options available. Cozy atmosphere for dining with family and friends. Come taste our mouth-watering pizzas!</p>
     
-        <div className={styles.wrapper}>
+        <div style={{display: 'flex', justifyContent: 'space-between', margin: 40, flexWrap: 'wrap', width: '100%'}}>
             {pizzaList.map((pizza)=> (
-              <PizzaCard key={pizza._id} pizza={pizza} />
+              <ProductCard key={pizza.id} />
             ))}
+        </div>
+
+        <div style={{display: 'flex', justifyContent: 'center', marginBottom: 20, cursor: 'pointer'}}>
+          <a href="/menu" style={{padding: '16px 32px', backgroundColor: '#7d0d15', color: '#fff', borderRadius: 6}}>View All Products</a>
         </div>
     </div>
   )

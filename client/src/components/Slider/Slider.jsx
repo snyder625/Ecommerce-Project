@@ -4,9 +4,9 @@ import './Slider.css'
 const Slider = () => {
   const [index, setIndex] = useState(0);
   const images = [
-    "/img/pizzaaaaaa.png",
-    "/img/Slider2.png",
-    "/img/Slider3.png"
+    "/img/cover1.png",
+    "/img/cover.jpg",
+    "/img/cover2.png"
   ];
 
   const prevSlide = () => {

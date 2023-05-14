@@ -1,15 +1,15 @@
 .slider {
     position: relative;
     width: 100%;
-    height: calc(100vh - 100px);
-    background-color: #ab131b;
+    height: calc(100vh - 150px);
+    /* background-color: #ab131b; */
   }
   
   .slide {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
   }
   
   .arrow {
