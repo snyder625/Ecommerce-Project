@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cart, Dashboard, Home, Menu, Product } from "./pages";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
             <Route path=":id" element={<Product />} />
           </Route>
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );

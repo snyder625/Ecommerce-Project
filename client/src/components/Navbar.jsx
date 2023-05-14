@@ -16,28 +16,28 @@ const Navbar = () => {
       </div>
       <div className={styles.item}>
         <ul className={styles.list}>
-          <Link to="/" passHref className={styles.link}>
+          <Link to="/" className={styles.link}>
             <li className={styles.listItem}>Home</li>
           </Link>
-          <Link to="/products" className={styles.link}>
+          <Link to="/menu" className={styles.link}>
             <li className={styles.listItem}>Menu</li>
           </Link>
           <li className={styles.listItem}>Deals</li>
-          <Link to="/" passHref className={styles.link}>
+          <Link to="/" className={styles.link}>
             <img src="/img/logoo.png" alt="" width="175" height="89" />
           </Link>
-          <Link to="/blog" passHref className={styles.link}>
+          <Link to="/blog" className={styles.link}>
             <li className={styles.listItem}>Blog</li>
           </Link>
-          <Link to="/contact" passHref className={styles.link}>
+          <Link to="/contact" className={styles.link}>
             <li className={styles.listItem}>Contact</li>
           </Link>
-          <Link to="/login" passHref className={styles.link}>
+          <Link to="/auth" className={styles.link}>
             <li className={styles.listItem}>Log in / sign up</li>
           </Link>
         </ul>
       </div>
-      <Link to="/cart" passHref>
+      <Link to="/cart">
         <div className={styles.item}>
           <div className={styles.cart}>
             <img src="/img/cart.png" alt="" width="30" height="30" />
