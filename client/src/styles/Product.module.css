@@ -1,6 +1,7 @@
 .container {
     height: calc(100vh - 100px);
     display: flex;
+    margin: null;
 }
 
 .left {
@@ -13,9 +14,12 @@
 }
 
 .right {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     padding: 20px;
     margin-top: 24px;
+    gap: 1rem;
 }
 
 .imgContainer {
@@ -28,7 +32,7 @@
     color: #d1411e;
     font-size: 24px;
     font-weight: 400;
-    border-bottom: 1px solid #d1411e;
+    /* border-bottom: 1px solid #d1411e; */
 }
 
 .sizes {
@@ -88,14 +92,16 @@
     height: 30px;
 }
 
-.button {
+.cartbtn {
     height: 30px;
     margin-left: 10px;
-    background-color: #d1411e;
+    background-color: #0f9675;
     color: white;
     border: none;
+    border-radius: 4px;
     font-weight: 500;
     cursor: pointer;
+    padding: 0.5rem;
 }
 
 @media screen and (max-width: 480px) {

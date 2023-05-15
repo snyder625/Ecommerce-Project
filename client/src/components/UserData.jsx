@@ -28,7 +28,7 @@ const UserData = () => {
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>
-              <button onClick={() => deleteUser(user.id)}>Delete</button>
+              <button className="dashboardBtn" onClick={() => deleteUser(user.id)}>Delete</button>
               {/* Add edit functionality */}
             </td>
           </tr>

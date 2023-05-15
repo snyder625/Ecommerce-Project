@@ -15,7 +15,7 @@
     font-weight: bold;
   }
   
-  .data-table td button {
+  .data-table td .dashboardBtn {
     background-color: #0f9675;
     color: #fff;
     border: none;
@@ -23,7 +23,7 @@
     cursor: pointer;
   }
   
-  .data-table td button:hover {
+  .data-table td .dashboardBtn:hover {
     background-color: #cfe3df;
     color: #000;
   }  

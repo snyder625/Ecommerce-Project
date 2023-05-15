@@ -3,8 +3,8 @@ import '../styles/UserData.css';
 
 const UserDetails = () => {
   const [products, setProducts] = useState([
-    { id: 1, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'Fajita Pizza', description: 'Description 1' },
-    { id: 2, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'California Pizza', description: 'Description 2' },
+    { id: 1, customer: 'Rizwan Ahmed', total: 'Rs 4000', payment: 'Cash', status: 'Completed' },
+    { id: 2, customer: 'Mark Chapman', total: 'Rs 4000', payment: 'Paypal', status: 'Ongoing' },
   ]);
 
   const deleteProduct = (id) => {
@@ -18,9 +18,10 @@ const UserDetails = () => {
       <thead>
         <tr>
           <th>ID</th>
-          <th> Image </th>
-          <th>Name</th>
-          <th>Description</th>
+          <th>Customer</th>
+          <th>Total</th>
+          <th>Payment Method</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -28,12 +29,12 @@ const UserDetails = () => {
         {products.map((product) => (
           <tr key={product.id}>
             <td>{product.id}</td>
-            <td><img src={product.image} width="50" /></td>
-            <td>{product.name}</td>
-            <td>{product.description}</td>
+            <td>{product.customer}</td>
+            <td>{product.total}</td>
+            <td>{product.payment}</td>
+            <td>{product.status}</td>
             <td>
-              <button style={{marginRight: 20}}>Edit</button>
-              <button onClick={() => deleteProduct(product.id)}>Delete</button>
+              <button className="dashboardBtn" onClick={() => deleteProduct(product.id)}>Delete</button>
             </td>
           </tr>
         ))}

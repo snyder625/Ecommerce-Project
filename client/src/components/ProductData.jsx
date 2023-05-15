@@ -8,7 +8,7 @@ const ProductData = () => {
 
   const [close, setClose] = useState(true)
   const [products, setProducts] = useState([
-    { id: 1, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'Fajita Pizza', description: 'Description should be big enough to check the spacing problems' },
+    { id: 1, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'Fajita Pizza', description: 'Description should be big enough to check the spacing problem' },
     { id: 2, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'California Pizza', description: 'Description 2' },
   ]);
 
@@ -24,8 +24,9 @@ const ProductData = () => {
         <tr>
           <th>ID</th>
           <th> Image </th>
-          <th>Name</th>
+          <th>Title</th>
           <th>Description</th>
+          <th>Price</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -36,9 +37,10 @@ const ProductData = () => {
             <td><img src={product.image} width="50" /></td>
             <td>{product.name}</td>
             <td>{product.description}</td>
+            <td>Rs 4000</td>
             <td>
-              <button style={{marginRight: 20}}>Edit</button>
-              <button onClick={() => deleteProduct(product.id)}>Delete</button>
+              <button className="dashboardBtn" style={{marginRight: 20}}>Edit</button>
+              <button className="dashboardBtn" onClick={() => deleteProduct(product.id)}>Delete</button>
             </td>
           </tr>
         ))}

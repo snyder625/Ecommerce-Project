@@ -71,7 +71,7 @@ const Product = () => {
             </div>
             <div className={styles.add}>
                 <input type="number" defaultValue={1} className={styles.quantity} />
-                <button className={styles.button}>Add to Cart</button>
+                <button className={styles.cartbtn}>Add to Cart</button>
             </div>
         </div>
     </div>
