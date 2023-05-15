@@ -13,7 +13,7 @@ const UserData = () => {
 
   return (
     <>
-      <h2 style={{display: 'flex', justifyContent: 'center'}}>User Data</h2>
+      <h2 style={{display: 'flex', justifyContent: 'center', marginBottom: 20}}>User Data</h2>
     <table className="data-table">
       <thead>
         <tr>

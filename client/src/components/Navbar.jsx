@@ -32,7 +32,7 @@ const Navbar = () => {
           <Link to="/contact" className={styles.link}>
             <li className={styles.listItem}>Contact</li>
           </Link>
-          <Link to="/auth" className={styles.link}>
+          <Link to="/login" className={styles.link}>
             <li className={styles.listItem}>Log in / sign up</li>
           </Link>
         </ul>

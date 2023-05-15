@@ -4,6 +4,7 @@ import styles from '../styles/Dashboard.module.css'
 const Sidebar = ({ selectedOption, onOptionSelect }) => {
   return (
     <div className={styles.sidebar}>
+      <h2 style={{display: 'flex', alignItems: 'center', margin: '0 0 10px'}}>Admin Dashboard</h2>
       <ul>
         <li
           className={selectedOption === 'users' ? 'selected' : ''}

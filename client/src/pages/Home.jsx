@@ -2,17 +2,9 @@
 import styles from '../styles/Home.module.css'
 import PizzaList from "../components/PizzaList"
 import Slider from "../components/Slider/Slider"
-// import AddButton from "../components/AddButton"
-// import Add from '../components/Add'
-import ProductCard from '../components/ProductCard'
-
-const Data = [
-  {}, {}, {}, {}
-]
+// import ProductCard from '../components/ProductCard'
 
 function Home() {
-  // const [close, setClose] = useState(true)
-  
   return (
     <div className={styles.container}>
       <Slider />

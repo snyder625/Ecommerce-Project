@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import '../styles/UserData.css';
 
+import AddButton from './AddButton';
+import Add from './Add'
+
 const ProductData = () => {
+
+  const [close, setClose] = useState(true)
   const [products, setProducts] = useState([
     { id: 1, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'Fajita Pizza', description: 'Description should be big enough to check the spacing problems' },
     { id: 2, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'California Pizza', description: 'Description 2' },
@@ -12,6 +17,8 @@ const ProductData = () => {
   };
 
   return (
+    <>
+    <h2 style={{display: 'flex', justifyContent: 'center', marginBottom: 20}}>Product Data</h2>
     <table className="data-table">
       <thead>
         <tr>
@@ -37,6 +44,11 @@ const ProductData = () => {
         ))}
       </tbody>
     </table>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+      <AddButton setClose={setClose} />
+    </div>
+    {!close && <Add setClose={setClose} />}
+    </>
   );
 };
 

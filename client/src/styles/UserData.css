@@ -24,5 +24,6 @@
   }
   
   .data-table td button:hover {
-    background-color: #0f9675;
+    background-color: #cfe3df;
+    color: #000;
   }  

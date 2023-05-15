@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Cart, Dashboard, Home, Menu, Product } from "./pages";
+import { Cart, Dashboard, Home, Login, Menu, Product, Register } from "./pages";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
@@ -17,6 +17,8 @@ function App() {
           <Route path="product">
             <Route path=":id" element={<Product />} />
           </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Routes>
         <Footer />
       </BrowserRouter>

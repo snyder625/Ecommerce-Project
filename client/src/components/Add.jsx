@@ -6,6 +6,7 @@ const Add = ({setClose}) => {
 
     const [file, setFile] = useState();
     const [title, setTitle] = useState()
+    const [type, setType] = useState()
     const [desc, setDesc] = useState()
     const [prices, setPrices] = useState([]);
     const [extra, setExtra] = useState();
@@ -34,7 +35,7 @@ const Add = ({setClose}) => {
             const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlv66jaxn/image/upload", data);
             const { url } = uploadRes.data;
             const newProduct = {
-                title, desc, prices, extraOptions, img:url
+                title, type, desc, prices, extraOptions, img:url
             };
 
             await axios.post("http://localhost:3000/api/products", newProduct);
@@ -48,7 +49,7 @@ const Add = ({setClose}) => {
     <div className={styles.container}>
         <div className={styles.wrapper}>
             <span onClick={() =>setClose(true)} className={styles.close}>X</span>
-            <h1>Add a new Pizza</h1>
+            <h2 style={{display: 'flex', justifyContent: 'center'}}>Add a new Product</h2>
             <div className={styles.item}>
                 <label className={styles.label}>Choose an image</label>
                 <input type="file" onChange={(e)=>setFile(e.target.files[0])} />
@@ -56,6 +57,10 @@ const Add = ({setClose}) => {
             <div className={styles.item}>
                 <label className={styles.label}>Title</label>
                 <input type="text" className={styles.input} onChange={(e)=>setTitle(e.target.value)}/>
+            </div>
+            <div className={styles.item}>
+                <label className={styles.label}>Type</label>
+                <input type="text" className={styles.input} onChange={(e)=>setType(e.target.value)}/>
             </div>
             <div className={styles.item}>
                 <label className={styles.label}>Description</label>

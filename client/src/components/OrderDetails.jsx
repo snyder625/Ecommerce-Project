@@ -12,6 +12,8 @@ const UserDetails = () => {
   };
 
   return (
+    <>
+    <h2 style={{display: 'flex', justifyContent: 'center', marginBottom: 20}}>Order Data</h2>
     <table className="data-table">
       <thead>
         <tr>
@@ -30,13 +32,14 @@ const UserDetails = () => {
             <td>{product.name}</td>
             <td>{product.description}</td>
             <td>
-              <button>Edit</button>
+              <button style={{marginRight: 20}}>Edit</button>
               <button onClick={() => deleteProduct(product.id)}>Delete</button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+    </>
   );
 };
 

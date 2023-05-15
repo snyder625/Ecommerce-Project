@@ -10,9 +10,9 @@ const Footer = () => {
           <img src="/img/logoo.png" className="logo-icon" />
         </div>
         <div className="footer-address">
-          <p>123 Main Street, City</p>
+          <p>123 Main Street, Islamabad</p>
           <p>Phone: (090) 078-601</p>
-          <p>Email: info@tastypizza.com</p>
+          <p>Email: info@pizzapoint.com</p>
         </div>
         <div className="footer-links">
           <a href="/menu">Menu</a>
@@ -34,7 +34,7 @@ const Footer = () => {
           <a href="#" className="icon-link">
             <FontAwesomeIcon icon={faTwitter} className="icon" />
           </a>
-          <a href="https://linkedin.com/company/pizzapointt" target='_blank' className="icon-link">
+          <a href="#" className="icon-link">
             <FontAwesomeIcon icon={faLinkedin} className="icon" />
           </a>
           <a href="#" className="icon-link">
