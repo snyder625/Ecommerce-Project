@@ -10,15 +10,7 @@ import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
-const categories = [
-  "Laptop",
-  "Footwear",
-  "Bottom",
-  "Tops",
-  "Attire",
-  "Camera",
-  "SmartPhones",
-];
+const categories = ["Pizza", "Burger", "Pasta", "Fries"];
 
 const Menu = () => {
   // const dispatch = useDispatch();
