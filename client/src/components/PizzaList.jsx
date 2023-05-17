@@ -3,7 +3,38 @@ import styles from '../styles/PizzaList.module.css'
 import ProductCard from './ProductCard';
 
 const PizzaList = () => {
-    const pizzaList = [{}, {}, {}, {}];
+    const pizzaList = [{
+      id: 1,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "Fajita Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 2,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 3,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "Fajita Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 4,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },];
   return (
     <div className={styles.container}>
         <h2 className={styles.title}>THE BEST PIZZA IN THE CITY</h2>
@@ -11,7 +42,7 @@ const PizzaList = () => {
     
         <div style={{display: 'flex', justifyContent: 'space-between', margin: 40, flexWrap: 'wrap', width: '100%'}}>
             {pizzaList.map((pizza)=> (
-              <ProductCard key={pizza.id} />
+              <ProductCard key={pizza.id} product={pizza} />
             ))}
         </div>
 
