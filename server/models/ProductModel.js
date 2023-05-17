@@ -6,6 +6,11 @@ const ProductSchema = new mongoose.Schema({
         required: true,
         maxLength: 60
     },
+    category: {
+        type: 'string',
+        required: true,
+        maxLength: 10
+    },
     desc: {
         type: 'string',
         required: true,
@@ -17,10 +22,6 @@ const ProductSchema = new mongoose.Schema({
     },
     prices: {
         type: [Number],
-        required: true
-    },
-    category: {
-        type: 'string',
         required: true
     },
     extraOptions: {
