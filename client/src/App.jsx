@@ -1,5 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import store from '../src/redux/store'
+import { Provider } from 'react-redux'
+
 import { Cart, Dashboard, Home, Login, Menu, Product, Register } from "./pages";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -10,7 +13,7 @@ import ScrollTop from "./scroll/ScrollTop";
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <Navbar />
         <ScrollTop>
@@ -36,7 +39,7 @@ function App() {
         </ScrollTop>
         <Footer />
       </BrowserRouter>
-    </>
+    </Provider>
   );
 }
 

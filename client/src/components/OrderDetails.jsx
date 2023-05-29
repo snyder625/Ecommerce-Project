@@ -1,47 +1,31 @@
 import { useState } from 'react';
-import '../styles/UserData.css';
+import styles from '../styles/OrderDetails.module.css'
 
-const UserDetails = () => {
-  const [products, setProducts] = useState([
-    { id: 1, customer: 'Rizwan Ahmed', total: 'Rs 4000', payment: 'Cash', status: 'Completed' },
-    { id: 2, customer: 'Mark Chapman', total: 'Rs 4000', payment: 'Paypal', status: 'Ongoing' },
-  ]);
+const OrderDetails = ({total, createOrder}) => {
 
-  const deleteProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
+    const [customer, setCustomer] = useState("");
+    const [address, setAddress] = useState("");
+
+    const handleClick = () => {
+        createOrder({customer, address, total, method: 0})
+    }
 
   return (
-    <>
-    <h2 style={{display: 'flex', justifyContent: 'center', marginBottom: 20}}>Order Data</h2>
-    <table className="data-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Customer</th>
-          <th>Total</th>
-          <th>Payment Method</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((product) => (
-          <tr key={product.id}>
-            <td>{product.id}</td>
-            <td>{product.customer}</td>
-            <td>{product.total}</td>
-            <td>{product.payment}</td>
-            <td>{product.status}</td>
-            <td>
-              <button className="dashboardBtn" onClick={() => deleteProduct(product.id)}>Delete</button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </>
-  );
-};
+    <div className={styles.container}>
+        <div className={styles.wrapper}>
+            <h1 className={styles.title}>You will pay $12 after delivery</h1>
+            <div className={styles.item}>
+                <label className={styles.label}>Name</label>
+                <input placeholder="" type="text" className={styles.input} onChange={(e)=>setCustomer(e.target.value)} />
+            </div>
+            <div className={styles.item}>
+                <label className={styles.label}>Address</label>
+                <input placeholder="" type="text" className={styles.input} onChange={(e)=>setAddress(e.target.value)} />
+            </div>
+            <button className={styles.button} onClick={handleClick}>Order</button>
+        </div>
+    </div>
+  )
+}
 
-export default UserDetails;
+export default OrderDetails

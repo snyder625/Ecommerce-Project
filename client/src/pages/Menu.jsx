@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/Menu.module.css";
 // import { useSelector, useDispatch } from "react-redux";
 // import Loading from "../layout/loader/Loading";
@@ -16,7 +16,7 @@ const Menu = () => {
   // const dispatch = useDispatch();
   // const alert = useAlert();
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setprice] = useState([0, 250000]);
+  const [price, setprice] = useState([0, 25000]);
   const [ratings, setRatings] = useState(0);
   const [category, setCategory] = useState("");
   // const { products, loading, error, productsCount, resultPerPage } =
@@ -159,7 +159,7 @@ const Menu = () => {
               aria-labelledby="range-slider"
               valueLabelDisplay="auto"
               min={0}
-              max={250000}
+              max={25000}
             />
 
             {/* categories*/}
