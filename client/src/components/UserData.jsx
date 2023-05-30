@@ -1,15 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/UserData.css';
+import axios from 'axios';
 
 const UserData = () => {
   const [users, setUsers] = useState([
-    { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+    { _id: 1, name: 'John Doe', email: 'john@example.com' },
+    { _id: 2, name: 'Jane Smith', email: 'jane@example.com' },
   ]);
 
-  const deleteUser = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/users/${id}`);
+      setUsers(users.filter((user) => user._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/users/");
+        setUsers(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -24,11 +42,11 @@ const UserData = () => {
       </thead>
       <tbody>
         {users.map((user) => (
-          <tr key={user.id}>
+          <tr key={user._id}>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>
-              <button className="dashboardBtn" onClick={() => deleteUser(user.id)}>Delete</button>
+              <button className="dashboardBtn" onClick={() => deleteUser(user._id)}>Delete</button>
               {/* Add edit functionality */}
             </td>
           </tr>

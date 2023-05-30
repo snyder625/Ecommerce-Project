@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 import ContentArea from '../components/ContentArea';
 
 const Dashboard = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('users');
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);

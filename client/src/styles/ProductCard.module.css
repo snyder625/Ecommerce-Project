@@ -24,6 +24,8 @@
   
   .productDescription {
     margin-bottom: 12px;
+    height: 75px;
+    font-size: 14px;
   }
   
   .productPrice {
@@ -43,8 +45,9 @@
     display: flex;
     justify-content: center;
     padding: 0.6em 1.2em;
-    font-size: 1em;
+    font-size: 14px;
     font-weight: 500;
+    text-transform: uppercase;
   }
   
   .cartButton:hover {

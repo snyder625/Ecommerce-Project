@@ -1,40 +1,26 @@
 import styles from '../styles/PizzaList.module.css'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 // import PizzaCard from '../PizzaCard/PizzaCard';
 import ProductCard from './ProductCard';
 
 const PizzaList = () => {
-    const pizzaList = [{
-      id: 1,
-      image:
-        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-      name: "Fajita Pizza",
-      description:
-        "Description should be big enough to check the spacing problem",
-    },
-    {
-      id: 2,
-      image:
-        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-      name: "California Pizza",
-      description:
-        "Description should be big enough to check the spacing problem",
-    },
-    {
-      id: 3,
-      image:
-        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-      name: "Fajita Pizza",
-      description:
-        "Description should be big enough to check the spacing problem",
-    },
-    {
-      id: 4,
-      image:
-        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-      name: "California Pizza",
-      description:
-        "Description should be big enough to check the spacing problem",
-    },];
+
+  const [pizzaList, setPizzaList] = useState([]);
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/products/");
+        setPizzaList(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [])
+    
   return (
     <div className={styles.container}>
         <h2 className={styles.title}>THE BEST PIZZA IN THE CITY</h2>

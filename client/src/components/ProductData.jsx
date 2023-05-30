@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../styles/UserData.css';
 
 import AddButton from './AddButton';
@@ -7,14 +8,29 @@ import Add from './Add'
 const ProductData = () => {
 
   const [close, setClose] = useState(true)
-  const [products, setProducts] = useState([
-    { id: 1, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'Fajita Pizza', description: 'Description should be big enough to check the spacing problem' },
-    { id: 2, image: 'https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000', name: 'California Pizza', description: 'Description 2' },
-  ]);
+  const [products, setProducts] = useState([]);
 
-  const deleteProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
+  const deleteProduct = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/products/${id}`);
+      setProducts(products.filter((product) => product._id !== id));
+    } catch (error) {
+      console.error(error);
+    }
   };
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/products/");
+        setProducts(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -30,17 +46,17 @@ const ProductData = () => {
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody style={{textAlign: 'center'}}>
         {products.map((product) => (
-          <tr key={product.id}>
-            <td>{product.id}</td>
-            <td><img src={product.image} width="50" /></td>
-            <td>{product.name}</td>
-            <td>{product.description}</td>
-            <td>Rs 4000</td>
-            <td>
+          <tr key={product._id}>
+            <td style={{ width: '5%' }}>{product._id}</td>
+            <td style={{ width: '15%' }}><img src={product.img} width="75" /></td>
+            <td style={{ width: '15%' }}>{product.title}</td>
+            <td style={{ width: '35%' }}>{product.desc}</td>
+            <td style={{ width: '10%' }}>Rs. {product.prices[0]}</td>
+            <td style={{ width: '20%' }}>
               <button className="dashboardBtn" style={{marginRight: 20}}>Edit</button>
-              <button className="dashboardBtn" onClick={() => deleteProduct(product.id)}>Delete</button>
+              <button className="dashboardBtn" onClick={() => deleteProduct(product._id)}>Delete</button>
             </td>
           </tr>
         ))}

@@ -3,7 +3,7 @@ import Product from "../models/ProductModel.js";
 
 //Add a new product, for admin dashboard
 export const addProduct = async (req, res) => {
-    const newProduct = await Product(req.body);
+    const newProduct = new Product(req.body);
 
     try {
         await newProduct.save();

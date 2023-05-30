@@ -4,7 +4,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className={styles.productCard}>
       <div className={styles.productImage}>
-        <img src={product.image} alt="Product" className={styles.Image} />
+        <img src={product.img} alt="Product" className={styles.Image} />
       </div>
       <div>
         <div
@@ -16,12 +16,12 @@ const ProductCard = ({ product }) => {
             alignItems: "center",
           }}
         >
-          <h3 className={styles.productName}>{product.name}</h3>
+          <h3 className={styles.productName}>{product.title}</h3>
           <h3 className={styles.productPrice}>
             <sub>Rs. 4900</sub>
           </h3>
         </div>
-        <p className={styles.productDescription}>{product.description}</p>
+        <p className={styles.productDescription} aria-rowspan={4}>{product.desc}</p>
         <div
           style={{
             display: "flex",
@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
             marginBottom: 10,
           }}
         >
-          <button className={styles.cartButton}>Add to Cart</button>
+          <button className={styles.cartButton}>{product.category === "pizza" ? "Customize" : "Add to Cart"}</button>
         </div>
       </div>
     </div>

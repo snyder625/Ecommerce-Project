@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 import orderRoute from './routes/orderRoutes.js'
 import productRoute from './routes/productRoutes.js'
@@ -18,7 +19,7 @@ const connect = ()=> {
 
 app.use(cookieParser());
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 app.use('/user', userRoute)
 app.use('/products', productRoute)
@@ -34,7 +35,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(5000, ()=>{
+app.listen(3000, ()=>{
     connect();
-    console.log("App is running on port 5000")
+    console.log("App is running on port 3000")
 })
