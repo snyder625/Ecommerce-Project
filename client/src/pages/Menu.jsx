@@ -46,6 +46,86 @@ const Menu = () => {
       description:
         "Description should be big enough to check the spacing problem",
     },
+    {
+      id: 3,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 4,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 5,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 6,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 7,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 8,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 9,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 10,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 11,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
+    {
+      id: 12,
+      image:
+        "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
+      name: "California Pizza",
+      description:
+        "Description should be big enough to check the spacing problem",
+    },
   ];
   const keyword = useParams();
   const loading = false;
@@ -67,7 +147,7 @@ const Menu = () => {
           <div className={styles.menu}>
             {products &&
               products.map((product) => (
-                <ProductCard key={product._id} product={product} />
+                <ProductCard key={product.id} product={product} />
               ))}
           </div>
 
