@@ -101,4 +101,7 @@
   .categorylink {
     font: 400 1.8vmax "Roboto";
   }
+  .menu {
+    width: 100vw;
+  }
 }
