@@ -33,110 +33,13 @@ const Menu = () => {
   const resultPerPage = 10;
   const productsCount = 10;
   const getAllProducts = async () => {
-    const result = await axios.get("http://localhost:4000/products/");
+    const result = await axios.get("http://localhost:3000/products/");
     setProducts(result.data);
   };
   useEffect(() => {
     getAllProducts();
   }, []);
-  // const products = [
-  //   {
-  //     id: 1,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "Fajita Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 2,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 3,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 4,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 5,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 6,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 7,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 8,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 9,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 10,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 11,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  //   {
-  //     id: 12,
-  //     image:
-  //       "https://img.freepik.com/free-photo/mixed-pizza-with-various-ingridients_140725-3790.jpg?w=2000",
-  //     name: "California Pizza",
-  //     description:
-  //       "Description should be big enough to check the spacing problem",
-  //   },
-  // ];
+  
   const keyword = useParams();
   const loading = false;
   useEffect(() => {
@@ -157,7 +60,7 @@ const Menu = () => {
           <div className={styles.menu}>
             {products &&
               products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product._id} product={product} />
               ))}
           </div>
 
