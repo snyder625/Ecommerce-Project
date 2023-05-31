@@ -1,6 +1,14 @@
 import styles from "../styles/ProductCard.module.css"; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
+
+  const navigate = useNavigate();
+
+  const handleButtonClick = (id) => {
+    navigate(`/products/${id}`);
+  };
+
   return (
     <div className={styles.productCard}>
       {product && (
@@ -31,8 +39,8 @@ const ProductCard = ({ product }) => {
                 marginBottom: 10,
               }}
             >
-              <button className={styles.cartButton}>Add to Cart</button>
-            </div>
+              <button className={styles.cartButton} onClick={() => handleButtonClick(product._id)}>Add to Cart</button>
+            </div> 
           </div>
         </>
       )}

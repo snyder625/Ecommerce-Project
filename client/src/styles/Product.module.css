@@ -76,7 +76,7 @@
 
 .option {
     display: flex;
-    align-items: center;
+    gap: 0.5rem;
     margin-right: 10px;
     font-size: 14px;
     font-weight: 500;
