@@ -62,6 +62,10 @@
   }
   
   .register-link a {
-    color: #ffca28;
+    color: #ab131b;
     text-decoration: none;
   }  
+
+  .register-link a:hover {
+    font-weight: bold;
+  }

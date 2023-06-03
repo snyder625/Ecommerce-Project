@@ -13,7 +13,7 @@ const OrderDetails = ({total, createOrder}) => {
   return (
     <div className={styles.container}>
         <div className={styles.wrapper}>
-            <h1 className={styles.title}>You will pay $12 after delivery</h1>
+            <h1 className={styles.title}>You will pay Rs. {total} after delivery</h1>
             <div className={styles.item}>
                 <label className={styles.label}>Name</label>
                 <input placeholder="" type="text" className={styles.input} onChange={(e)=>setCustomer(e.target.value)} />

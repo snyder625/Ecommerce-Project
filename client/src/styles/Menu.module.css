@@ -9,7 +9,7 @@
 }
 .menu {
   display: flex;
-  width: 60vw;
+  width: 70vw;
   margin: 2vmax auto;
   flex-wrap: wrap;
   max-width: 100%;

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import '../styles/Register.css';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
@@ -14,7 +16,8 @@ const Register = () => {
             name, email, password
         };
 
-        await axios.post("http://localhost:3000/users", newUser);
+        await axios.post("http://localhost:4000/user/register", newUser);
+        navigate('/cart')
     } catch (error) {
         console.log(error);
     }

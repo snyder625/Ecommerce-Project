@@ -22,7 +22,7 @@ const Cart = () => {
 
     const createOrder = async (data) => {
         try {
-            const res = await axios.post('localhost:3000/orders/', data);
+            const res = await axios.post('localhost:4000/orders/', data);
             res.status === 201;
             dispatch(reset());
         } catch (error) {
@@ -101,7 +101,7 @@ const Cart = () => {
                     <tr className={styles.tr} key={product._id}>
                         <td>
                             <div className={styles.imgContainer}>
-                                <img src={product.img} style={{objectFit: "cover"}} alt="" />
+                                <img src={product.img} className={styles.pizza_image} alt="product image" />
                             </div>
                         </td>
                         <td>
@@ -115,13 +115,13 @@ const Cart = () => {
                             </span>
                         </td>
                         <td>
-                            <span className={styles.price}>${product.price}</span>
+                            <span className={styles.price}>Rs. {product.price}</span>
                         </td>
                         <td>
                             <span className={styles.quantity}>{product.quantity}</span>
                         </td>
                         <td>
-                            <span className={styles.total}>${product.price * product.quantity}</span>
+                            <span className={styles.total}>Rs. {product.price * product.quantity}</span>
                         </td>
                     </tr>
                 ))}
@@ -132,13 +132,13 @@ const Cart = () => {
             <div className={styles.wrapper}>
                 <h2 className={styles.title}>CART TOTAL</h2>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Subtotal:</b>${cart.total}
+                    <b className={styles.totalTextTitle}>Subtotal:</b>Rs. {cart.total}
                 </div>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Discount:</b>$0.00
+                    <b className={styles.totalTextTitle}>Discount:</b>Rs. 0.00
                 </div>
                 <div className={styles.totalText}>
-                    <b className={styles.totalTextTitle}>Total:</b>${cart.total}
+                    <b className={styles.totalTextTitle}>Total:</b>Rs. {cart.total}
                 </div>
                 
                 {open ? (

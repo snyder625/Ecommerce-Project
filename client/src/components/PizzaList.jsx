@@ -1,7 +1,6 @@
 import styles from "../styles/PizzaList.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import PizzaCard from '../PizzaCard/PizzaCard';
 import ProductCard from "./ProductCard";
 
 const PizzaList = () => {

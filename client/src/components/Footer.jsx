@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="footer-address">
           <p>123 Main Street, Islamabad</p>
           <p>Phone: (090) 078-601</p>
-          <p>Email: info@pizzapoint.com</p>
+          <p>Email: info@crustandco.com</p>
         </div>
         <div className="footer-links">
           <a href="/menu">Menu</a>
@@ -34,7 +34,7 @@ const Footer = () => {
           <a href="#" className="icon-link">
             <FontAwesomeIcon icon={faTwitter} className="icon" />
           </a>
-          <a href="#" className="icon-link">
+          <a href="https://linkedin.com/company/pizzapointt" target="_blank" className="icon-link">
             <FontAwesomeIcon icon={faLinkedin} className="icon" />
           </a>
           <a href="#" className="icon-link">
@@ -42,7 +42,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <p className="footer-copy">© 2023 PizzaPoint. All rights reserved.</p>
+      <p className="footer-copy">© 2023 Crust &Co. All rights reserved.</p>
     </footer>
   );
 };

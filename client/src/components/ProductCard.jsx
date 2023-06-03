@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
                 marginBottom: 10,
               }}
             >
-              <button className={styles.cartButton} onClick={() => handleButtonClick(product._id)}>Add to Cart</button>
+              <button className={styles.cartButton} onClick={() => handleButtonClick(product._id)}>{product.category === "pizza" ? "Customize" : "Add to Cart"}</button>
             </div> 
           </div>
         </>
