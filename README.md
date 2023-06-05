@@ -10,7 +10,7 @@ MongoDB: https://www.mongodb.com/try/download/community <br>
 
 <h1>Installation</h1> <br>
 1. Clone the repository to your local machine using the following command: <br>
-`git clone https://github.com/snyder625/Ecommerce-Project`  <br>
+git clone https://github.com/snyder625/Ecommerce-Project  <br>
 
 2. Change into the client folder by running the following command: <br>
 ```cd client``` <br>
@@ -40,7 +40,7 @@ Run the following command: <br>
 This command will start the backend server.
 
 <h1>Accessing the Application</h1>
-Once the frontend and backend servers are running, you can access the application by opening a web browser and navigating to ```http://localhost:5173/```. This will load the client-side of the application.
+Once the frontend and backend servers are running, you can access the application by opening a web browser and navigating to http://localhost:5173/. This will load the client-side of the application.
 
 The backend server will be running on `http://localhost:4000/`.
 
