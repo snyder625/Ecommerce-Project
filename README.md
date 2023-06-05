@@ -10,7 +10,7 @@ MongoDB: https://www.mongodb.com/try/download/community <br>
 
 <h1>Installation</h1> <br>
 1. Clone the repository to your local machine using the following command: <br>
-```git clone https://github.com/snyder625/Ecommerce-Project ``` <br>
+```git clone <repository-url>```  <br>
 
 2. Change into the client folder by running the following command: <br>
 ```cd client``` <br>
