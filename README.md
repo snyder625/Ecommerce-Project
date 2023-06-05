@@ -4,11 +4,11 @@ This is a MERN (MongoDB, Express.js, React.js, Node.js) stack application. It co
 Prerequisites
 Before running this application, make sure you have the following software installed on your machine:
 
-Node.js: https://nodejs.org
-npm (Node Package Manager): https://www.npmjs.com/get-npm
-MongoDB: https://www.mongodb.com/try/download/community
+Node.js: https://nodejs.org <br>
+npm (Node Package Manager): https://www.npmjs.com/get-npm <br>
+MongoDB: https://www.mongodb.com/try/download/community <br>
 
-Installation
+<h1>Installation</h1> <br>
 Clone the repository to your local machine using the following command:
 
 git clone https://github.com/snyder625/Ecommerce-Project
