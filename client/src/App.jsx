@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import store from '../src/redux/store'
-import { Provider } from 'react-redux'
+import store from "../src/redux/store";
+import { Provider } from "react-redux";
 
 import { Cart, Dashboard, Home, Login, Menu, Product, Register } from "./pages";
 import Footer from "./components/Footer";
@@ -27,7 +27,7 @@ function App() {
               <Route path=":id" element={<Product />} />
             </Route>
             <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
 
             <Route exact path="/blog" element={<BlogMain />} />
             <Route

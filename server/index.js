@@ -28,19 +28,19 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
 
-app.use("/user", userRoute);
+app.use("/api/v1", userRoute);
 app.use("/products", productRoute);
 app.use("/post", orderRoute);
 
-app.use((err, req, res, next) => {
-  const status = err.status || 500;
-  const message = err.message || "Something went wrong";
-  return res.status(status).json({
-    success: false,
-    status,
-    message,
-  });
-});
+// app.use((err, req, res, next) => {
+//   const status = err.status || 500;
+//   const message = err.message || "Something went wrong";
+//   return res.status(status).json({
+//     success: false,
+//     status,
+//     message,
+//   });
+// });
 
 app.listen(4000, () => {
   connect();
