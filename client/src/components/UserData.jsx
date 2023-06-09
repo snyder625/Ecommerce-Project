@@ -3,14 +3,11 @@ import '../styles/UserData.css';
 import axios from 'axios';
 
 const UserData = () => {
-  const [users, setUsers] = useState([
-    { _id: 1, name: 'John Doe', email: 'john@example.com' },
-    { _id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-  ]);
+  const [users, setUsers] = useState([]);
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/users/${id}`);
+      await axios.delete(`http://localhost:4000/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error(error);
@@ -20,7 +17,7 @@ const UserData = () => {
   useEffect(()=> {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/users/");
+        const response = await axios.get("http://192.168.2.10:4000/api/v1/user/all");
         setUsers(response.data);
       } catch (error) {
         console.error(error);
@@ -47,7 +44,6 @@ const UserData = () => {
             <td>{user.email}</td>
             <td>
               <button className="dashboardBtn" onClick={() => deleteUser(user._id)}>Delete</button>
-              {/* Add edit functionality */}
             </td>
           </tr>
         ))}

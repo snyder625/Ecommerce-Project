@@ -117,13 +117,14 @@ export const updateUserDetails = asyncHandler(async (req, res, next) => {
 });
 
 //get all user admin
-export const getAllUsers = asyncHandler(async (req, res, next) => {
-  const users = await User.find();
-  res.status(200).json({
-    success: true,
-    users,
-  });
-});
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
+  } catch (error) {
+      res.status(500).json(error);
+  }
+};
 
 //get single user admin
 export const getSingleUser = asyncHandler(async (req, res, next) => {

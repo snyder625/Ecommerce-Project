@@ -30,7 +30,7 @@ app.use(cors());
 
 app.use("/api/v1", userRoute);
 app.use("/products", productRoute);
-app.use("/post", orderRoute);
+app.use("/order", orderRoute);
 
 // app.use((err, req, res, next) => {
 //   const status = err.status || 500;

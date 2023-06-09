@@ -18,7 +18,7 @@ const Register = () => {
         password,
       };
 
-      await axios.post("http://192.168.100.29:4000/api/v1/user/new", newUser);
+      await axios.post("http://192.168.2.10:4000/api/v1/user/new", newUser);
 
       navigate("/cart");
     } catch (error) {

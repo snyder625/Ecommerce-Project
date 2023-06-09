@@ -20,12 +20,7 @@ router.post("/user/login", loginUser);
 router.get("/user/me", isAuthenticatedUser, getUserDetails);
 router.put("/user/update", isAuthenticatedUser, updateUserDetails);
 router.get("/user/logout", logoutUser);
-router.get(
-  "/admin/users/all",
-  isAuthenticatedUser,
-  authRoles("admin"),
-  getAllUsers
-);
+router.get("/user/all", getAllUsers);
 router.get(
   "/admin/user/:id",
   isAuthenticatedUser,
@@ -44,4 +39,5 @@ router.put(
   authRoles("admin"),
   updateUserRole
 );
+
 export default router;

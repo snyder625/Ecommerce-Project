@@ -12,7 +12,7 @@ const ProductData = () => {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/products/${id}`);
+      await axios.delete(`http://localhost:4000/products/${id}`);
       setProducts(products.filter((product) => product._id !== id));
     } catch (error) {
       console.error(error);
@@ -55,7 +55,6 @@ const ProductData = () => {
             <td style={{ width: '35%' }}>{product.desc}</td>
             <td style={{ width: '10%' }}>Rs. {product.prices[0]}</td>
             <td style={{ width: '20%' }}>
-              <button className="dashboardBtn" style={{marginRight: 20}}>Edit</button>
               <button className="dashboardBtn" onClick={() => deleteProduct(product._id)}>Delete</button>
             </td>
           </tr>

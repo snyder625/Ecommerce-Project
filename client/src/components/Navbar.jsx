@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
 
   const quantity = useSelector(state=>state.cart.quantity);
+  const user = useSelector(state=>state.user);
 
   return (
     <div className={styles.container}>
@@ -35,9 +36,11 @@ const Navbar = () => {
           <Link to="/contact" className={styles.link}>
             <li className={styles.listItem}>Contact</li>
           </Link>
+          {user.currentUser ? <li className={styles.listItem}>Hello, {user.currentUser.user.name}</li> 
+          : 
           <Link to="/login" className={styles.link}>
             <li className={styles.listItem}>Log in / sign up</li>
-          </Link>
+          </Link>}
         </ul>
       </div>
       <Link to="/cart">
