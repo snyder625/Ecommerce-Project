@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post(
-        "http://192.168.2.10:4000/api/v1/user/login",
+        "http://192.168.100.29:4000/api/v1/user/login",
         {
           email,
           password,
@@ -26,6 +27,7 @@ const Login = () => {
       console.log(res.data);
       navigate("/");
     } catch (error) {
+      toast.error(error);
       dispatch(loginFailure());
     }
   };

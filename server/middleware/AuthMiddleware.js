@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 import userModel from "../models/userModel.js";
 
 import jwt from "jsonwebtoken";
-import ErrorHandler from "../utils/ErrorHandler.js";
+import { ErrorHandler } from "../utils/ErrorHandler.js";
 
 const isAuthenticatedUser = asyncHandler(async (req, res, next) => {
   const { token } = req.cookies;

@@ -7,6 +7,8 @@ import cors from "cors";
 import orderRoute from "./routes/orderRoutes.js";
 import productRoute from "./routes/productRoutes.js";
 import userRoute from "./routes/userRoutes.js";
+import { errMiddleware } from "./middleware/error.js";
+// import ErrorHandler from "./utils/ErrorHandler.js";
 
 const app = express();
 dotenv.config();
@@ -31,7 +33,7 @@ app.use(cors());
 app.use("/api/v1", userRoute);
 app.use("/products", productRoute);
 app.use("/order", orderRoute);
-
+app.use(errMiddleware);
 // app.use((err, req, res, next) => {
 //   const status = err.status || 500;
 //   const message = err.message || "Something went wrong";

@@ -10,7 +10,8 @@ const PizzaList = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:4000/products/");
-        setPizzaList(response.data);
+        // console.log();
+        setPizzaList(response.data.products);
       } catch (error) {
         console.error(error);
       }
