@@ -17,7 +17,8 @@ const OrderSchema = new mongoose.Schema({
     },
     status: {
         type: Number,
-        default: 0
+        default: 0,
+        max: 3
     },
     method: {
         type: Number,

@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
+// import { purgePersistedState } from "./store";
+
+const initialState = {
+    products: [],
+    quantity: 0,
+    total: 0
+}
 
 const cartSlice = createSlice({
     name: "cart",
-    initialState: {
-        products: [],
-        quantity: 0,
-        total: 0
-    },
+    initialState: initialState,
     reducers:{
         addProduct: (state, action) => {
             state.products.push(action.payload);
@@ -14,7 +17,7 @@ const cartSlice = createSlice({
             state.total += action.payload.price * action.payload.quantity;
         },
         reset: (state) => {
-            state = initialState;
+            return initialState
         }
     }
 });

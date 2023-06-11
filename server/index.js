@@ -3,13 +3,18 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import Stripe from "stripe";
 
 import orderRoute from "./routes/orderRoutes.js";
 import productRoute from "./routes/productRoutes.js";
 import userRoute from "./routes/userRoutes.js";
 
 const app = express();
-dotenv.config();
+dotenv.config({ path: "./.env" });
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: "2022-08-01",
+});
 
 const connect = () => {
   mongoose
@@ -28,19 +33,37 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
 
+app.get("/config", (req, res) => {
+  res.send({
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+  });
+});
+
+app.post("/create-payment-intent", async (req, res) => {
+  const {total} = req.body;
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      currency: "USD",
+      amount: total,
+      automatic_payment_methods: { enabled: true },
+    });
+
+    res.send({
+      clientSecret: paymentIntent.client_secret
+    });
+
+  } catch (e) {
+    return res.status(400).send({
+      error: {
+        message: e.message,
+      },
+    });
+  }
+});
+
 app.use("/api/v1", userRoute);
 app.use("/products", productRoute);
-app.use("/order", orderRoute);
-
-// app.use((err, req, res, next) => {
-//   const status = err.status || 500;
-//   const message = err.message || "Something went wrong";
-//   return res.status(status).json({
-//     success: false,
-//     status,
-//     message,
-//   });
-// });
+app.use("/orders", orderRoute);
 
 app.listen(4000, () => {
   connect();

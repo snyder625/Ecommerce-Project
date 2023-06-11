@@ -1,15 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/UserData.css';
+import axios from 'axios';
 
 const OrderData = () => {
-  const [products, setProducts] = useState([
-    { id: 1, customer: 'Rizwan Ahmed', total: 'Rs 4000', payment: 'Cash', status: 'Completed' },
-    { id: 2, customer: 'Mark Chapman', total: 'Rs 4000', payment: 'Paypal', status: 'Ongoing' },
-  ]);
+  const [orders, setOrders] = useState([]);
+  const status = ["Preparing", "On the way", "Delivered"];
 
-  const deleteProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
+  const handleStatus = async (id) => {
+    const item = orders.filter((order)=> order._id === id)[0]
+    const currentStatus = item.status
+    try {
+        const res = await axios.put("http://localhost:4000/orders/" + id, {status: currentStatus + 1});
+        setOrders([res.data, ...orders.filter((order)=> order._id !== id)])
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/orders/");
+        setOrders(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -18,23 +37,25 @@ const OrderData = () => {
       <thead>
         <tr>
           <th>ID</th>
-          <th>Customer</th>
+          <th>Customer Name</th>
           <th>Total</th>
+          <th>Address</th>
           <th>Payment Method</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {products.map((product) => (
-          <tr key={product.id}>
-            <td>{product.id}</td>
-            <td>{product.customer}</td>
-            <td>{product.total}</td>
-            <td>{product.payment}</td>
-            <td>{product.status}</td>
+        {orders.map((order) => (
+          <tr key={order._id}>
+            <td>{order._id}</td>
+            <td>{order.customer}</td>
+            <td>{order.total}</td>
+            <td>{order.address}</td>
+            <td>{order.method === 0 ? (<span>Cash</span>) : (<span>Paid</span>)}</td>
+            <td>{status[order.status]}</td>
             <td>
-              <button className="dashboardBtn" onClick={() => deleteProduct(product.id)}>Delete</button>
+              <button className="dashboardBtn" onClick={()=> handleStatus(order._id)}>Next Stage</button>
             </td>
           </tr>
         ))}

@@ -7,7 +7,7 @@ const UserData = () => {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/users/${id}`);
+      await axios.delete(`http://192.168.2.10:4000/api/v1/user/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error(error);

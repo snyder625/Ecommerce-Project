@@ -1,4 +1,3 @@
-// persistConfig.js
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {

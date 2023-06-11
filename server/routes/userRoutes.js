@@ -27,12 +27,7 @@ router.get(
   authRoles("admin"),
   getSingleUser
 );
-router.delete(
-  "/admin/user/:id",
-  isAuthenticatedUser,
-  authRoles("admin"),
-  deleteUser
-);
+router.delete("/user/:id", deleteUser);
 router.put(
   "/admin/user/:id",
   isAuthenticatedUser,

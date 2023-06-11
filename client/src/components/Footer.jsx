@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div className="footer-links">
           <a href="/menu">Menu</a>
-          <a href="/deals">Deals</a>
+          <a href="/track">Tracking</a>
           <a href="/contact">Contact</a>
         </div>
         <div className="footer-links">
@@ -34,7 +34,7 @@ const Footer = () => {
           <a href="#" className="icon-link">
             <FontAwesomeIcon icon={faTwitter} className="icon" />
           </a>
-          <a href="https://linkedin.com/company/pizzapointt" target="_blank" className="icon-link">
+          <a href="https://linkedin.com/company/pizzapointt" target="_blank" rel="noreferrer" className="icon-link">
             <FontAwesomeIcon icon={faLinkedin} className="icon" />
           </a>
           <a href="#" className="icon-link">
@@ -42,7 +42,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <p className="footer-copy">© 2023 Crust &Co. All rights reserved.</p>
+      <p className="footer-copy">© 2023 Crust & Co. All rights reserved.</p>
     </footer>
   );
 };

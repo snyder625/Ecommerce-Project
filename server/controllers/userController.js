@@ -170,7 +170,7 @@ export const deleteUser = asyncHandler(async (req, res, next) => {
       new ErrorHandler(`User does not exist with Id: ${req.params.id}`, 400)
     );
   }
-  await user.remove();
+  await User.findOneAndRemove(req.params.id);
   res.status(200).json({
     success: true,
     message: "User Deleted Successfully",

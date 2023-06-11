@@ -30,7 +30,7 @@ const Register = () => {
     <div className="container">
       <div className="signup-container">
         <h2>Create an Account</h2>
-        <form>
+        <form className="form">
           <input
             type="text"
             placeholder="Name"

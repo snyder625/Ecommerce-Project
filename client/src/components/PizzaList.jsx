@@ -34,6 +34,8 @@ const PizzaList = () => {
           display: "flex",
           justifyContent: "space-between",
           margin: 40,
+          marginLeft: 50,
+          marginRight: 50,
           flexWrap: "wrap",
           width: "100%",
         }}

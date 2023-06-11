@@ -9,12 +9,16 @@ import axios from "axios";
 import Typography from "@mui/material/Typography";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import { useSelector } from "react-redux";
 
 const categories = ["Pizza", "Burger", "Pasta", "Fries"];
+
 
 const Menu = () => {
   // const dispatch = useDispatch();
   // const alert = useAlert();
+  const {_id} = useSelector(state=>state.user.currentUser.user)
+  console.log(_id)
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setprice] = useState([0, 25000]);
   const [ratings, setRatings] = useState(0);
