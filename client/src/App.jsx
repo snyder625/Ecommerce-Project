@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Cart, Dashboard, Home, Login, Menu, Product, Register, Orders, OrderTracking } from "./pages";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import Payment from "./components/Payment";
 import Contact from "./components/contactUs/Contact";
 import Payment from "./components/Payment";
 import BlogMain from "./components/Blog/BlogMain";
@@ -17,22 +18,22 @@ function App() {
   const user = useSelector((state) => state.user);
 
   return (
-      <BrowserRouter>
-        <ToastContainer position="top-center" autoClose={3000} />
-        <Navbar />
-        <ScrollTop>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="cart" element={<Cart />} />
-            {/* <Route path="admin" element={user.currentUser.user.isAdmin && <Dashboard />} /> */}
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="products">
-              <Route path=":id" element={<Product />} />
-            </Route>
-            <Route path="login" element={!user.currentUser && <Login />} />
-            <Route path="/register" element={!user.currentUser && <Register />} />
+    <BrowserRouter>
+      <ToastContainer position="top-center" autoClose={3000} />
+      <Navbar />
+      <ScrollTop>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="cart" element={<Cart />} />
+          {/* <Route path="admin" element={user.currentUser.user.isAdmin && <Dashboard />} /> */}
+          <Route path="/contact" element={<Contact />} />
+          <Route path="products">
+            <Route path=":id" element={<Product />} />
+          </Route>
+          <Route path="login" element={!user.currentUser && <Login />} />
+          <Route path="/register" element={!user.currentUser && <Register />} />
+          <Route path="/payment" element={<Payment />} />
 
           <Route exact path="/blog" element={<BlogMain />} />
           <Route
