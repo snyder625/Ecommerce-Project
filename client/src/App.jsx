@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Cart, Dashboard, Home, Login, Menu, Product, Register } from "./pages";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import Payment from "./components/Payment";
 import Contact from "./components/contactUs/Contact";
 import BlogMain from "./components/Blog/BlogMain";
 import BlogViewDetails from "./components/Blog/BlogViewDetails";
@@ -31,6 +32,7 @@ function App() {
           </Route>
           <Route path="login" element={!user.currentUser && <Login />} />
           <Route path="/register" element={!user.currentUser && <Register />} />
+          <Route path="/payment" element={<Payment />} />
 
           <Route exact path="/blog" element={<BlogMain />} />
           <Route
