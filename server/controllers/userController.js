@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
 
-import ErrorHandler from "../utils/ErrorHandler.js";
+import { ErrorHandler } from "../utils/ErrorHandler.js";
 import User from "../models/userModel.js";
 // const bcrypt = require("bcryptjs");
 import { sendToken } from "../utils/sendingJWTtoken.js";
@@ -122,7 +122,7 @@ export const getAllUsers = async (req, res, next) => {
     const users = await User.find();
     res.status(200).json(users);
   } catch (error) {
-      res.status(500).json(error);
+    res.status(500).json(error);
   }
 };
 

@@ -8,6 +8,8 @@ import Stripe from "stripe";
 import orderRoute from "./routes/orderRoutes.js";
 import productRoute from "./routes/productRoutes.js";
 import userRoute from "./routes/userRoutes.js";
+import { errMiddleware } from "./middleware/error.js";
+// import ErrorHandler from "./utils/ErrorHandler.js";
 
 const app = express();
 dotenv.config({ path: "./.env" });

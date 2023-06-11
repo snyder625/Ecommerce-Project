@@ -20,10 +20,10 @@ const Menu = () => {
   const {_id} = useSelector(state=>state.user.currentUser.user)
   console.log(_id)
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setprice] = useState([0, 25000]);
+  const [price, setprice] = useState([0, 5000]);
   const [ratings, setRatings] = useState(0);
   const [category, setCategory] = useState("");
-  const [products, setProducts] = useState([]);
+  const [productsData, setProducts] = useState([]);
 
   // const { products, loading, error, productsCount, resultPerPage } =
   // useSelector((state) => state.products);
@@ -37,24 +37,34 @@ const Menu = () => {
   const productsCount = 10;
 
   const getAllProducts = async () => {
-    const result = await axios.get("http://localhost:4000/products/");
-    setProducts(result.data);
+    let result = await axios.get(
+      `  http://192.168.100.29:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+    );
+    if (category !== "") {
+      let categoryLowercase = category.toLowerCase();
+      result = await axios.get(
+        `http://192.168.100.29:4000/products?category=${categoryLowercase}`
+      );
+    }
+
+    console.log(result);
+    setProducts(result.data.products);
   };
 
   useEffect(() => {
     getAllProducts();
-  }, []);
-  
+  }, [category, price]);
+
   const keyword = useParams();
   const loading = false;
 
-  useEffect(() => {
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors());
-    // }
-    // dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, []);
+  // useEffect(() => {
+  //   // if (error) {
+  //   //   alert.error(error);
+  //   //   dispatch(clearErrors());
+  //   // }
+  //   // dispatch(getProduct(keyword, currentPage, price, category, ratings));
+  // }, []);
   // let count=filteredproductscount;
   return (
     <>
@@ -64,8 +74,8 @@ const Menu = () => {
         <>
           <h2 className={styles.menuHeading}>Products</h2>
           <div className={styles.menu}>
-            {products &&
-              products.map((product) => (
+            {productsData &&
+              productsData.map((product) => (
                 <ProductCard key={product._id} product={product} />
               ))}
           </div>
@@ -78,22 +88,24 @@ const Menu = () => {
               aria-labelledby="range-slider"
               valueLabelDisplay="auto"
               min={0}
-              max={25000}
+              max={5000}
             />
 
             {/* categories*/}
-            <Typography>Categories</Typography>
-            <ul className={styles.categoryBox}>
-              {categories.map((category) => (
-                <li
-                  className={styles.categorylink}
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
+
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="" key="">
+                Categories
+              </option>
+              {categories.map((cate, index) => (
+                <option key={index} value={cate}>
+                  {cate}
+                </option>
               ))}
-            </ul>
+            </select>
             <fieldset>
               <Typography>Ratings Above</Typography>
               <Slider

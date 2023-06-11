@@ -10,39 +10,40 @@ import Payment from "./components/Payment";
 import BlogMain from "./components/Blog/BlogMain";
 import BlogViewDetails from "./components/Blog/BlogViewDetails";
 import ScrollTop from "./scroll/ScrollTop";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const user = useSelector(state=>state.user);
-  
+  const user = useSelector((state) => state.user);
+
   return (
       <BrowserRouter>
+        <ToastContainer position="top-center" autoClose={3000} />
         <Navbar />
         <ScrollTop>
           <Routes>
-            <Route path="/payment" element={<Payment />} />
             <Route index element={<Home />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="cart" element={<Cart />} />
             {/* <Route path="admin" element={user.currentUser.user.isAdmin && <Dashboard />} /> */}
             <Route path="/contact" element={<Contact />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="products">
               <Route path=":id" element={<Product />} />
             </Route>
-            <Route path="/track" element={<OrderTracking />} />
-            <Route path="orders/:id" element={<Orders />} />
             <Route path="login" element={!user.currentUser && <Login />} />
             <Route path="/register" element={!user.currentUser && <Register />} />
 
-            <Route exact path="/blog" element={<BlogMain />} />
-            <Route
-              exact
-              path="/blog/blogdata/:id"
-              element={<BlogViewDetails />}
-            />
-          </Routes>
-        </ScrollTop>
-        <Footer />
-      </BrowserRouter>
+          <Route exact path="/blog" element={<BlogMain />} />
+          <Route
+            exact
+            path="/blog/blogdata/:id"
+            element={<BlogViewDetails />}
+          />
+        </Routes>
+      </ScrollTop>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
