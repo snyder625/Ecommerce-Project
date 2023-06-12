@@ -23,7 +23,7 @@ import BlogViewDetails from "./components/Blog/BlogViewDetails";
 import ScrollTop from "./scroll/ScrollTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Search from "./components/search/Search";
+// import Search from "./components/search/Search";
 
 function App() {
   const user = useSelector((state) => state.user);

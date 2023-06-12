@@ -16,6 +16,7 @@ const categories = ["Pizza", "Burger", "Pasta", "Fries"];
 const Menu = () => {
   // const dispatch = useDispatch();
   // const alert = useAlert();
+
   const { _id } = useSelector((state) => state.user.currentUser.user);
   console.log(_id);
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,6 +35,14 @@ const Menu = () => {
   const priceHandler = (event, newPrice) => {
     setprice(newPrice);
   };
+  const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+
+  const handleCheckboxChange = (event) => {
+    const checkboxValue = event.target.value.toLowerCase();
+
+    setCategory(checkboxValue);
+    console.log("Categeeery is", category);
+  };
   const resultPerPage = 10;
   const productsCount = 10;
 
@@ -48,8 +57,16 @@ const Menu = () => {
       );
     }
     if (keyword !== "") {
+      let categoryLowercase = category.toLowerCase();
       result = await axios.get(
         `http://192.168.100.29:4000/products?keyword=${keyword}&minPrice=${price[0]}&maxPrice=${price[1]}`
+      );
+    }
+    if (keyword !== "" && category !== "") {
+      let categoryLowercase = category.toLowerCase();
+
+      result = await axios.get(
+        `http://192.168.100.29:4000/products?keyword=${keyword}&minPrice=${price[0]}&maxPrice=${price[1]}&category=${categoryLowercase}`
       );
     }
 
@@ -103,6 +120,10 @@ const Menu = () => {
               min={0}
               max={5000}
             />
+            <div className="pricesSelected">
+              <p>MinPrice:{price[0]}</p>
+              <p>MaxPrice:{price[1]}</p>
+            </div>
 
             {/* categories*/}
 
@@ -119,6 +140,19 @@ const Menu = () => {
                 </option>
               ))}
             </select>
+            <div>
+              {categories.map((cate, ind) => (
+                <div key={ind} className="singleCheckBox">
+                  <input
+                    type="checkbox"
+                    value={cate}
+                    checked={(e) => setSelectedCheckbox(e.target.value)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label>{cate}</label>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/*resultPerPage < productsCount && (

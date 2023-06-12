@@ -61,3 +61,8 @@
   background-color: #cfe3df;
   color: #000;
 }
+@media (max-width: 600px) {
+  .productCard {
+    width: 70vw;
+  }
+}
