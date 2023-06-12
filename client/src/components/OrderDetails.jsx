@@ -11,7 +11,7 @@ const OrderDetails = ({total, createOrder, setOpenModel}) => {
     const [address, setAddress] = useState("");
 
     const handleClick = () => {
-        createOrder({customer, address, total, method: 0});
+        createOrder({customer, userId: user.currentUser.user._id, address, total, method: 0});
         reset()
         setOpenModel(false)
     }

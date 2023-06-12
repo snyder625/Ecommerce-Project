@@ -17,8 +17,6 @@ const categories = ["Pizza", "Burger", "Pasta", "Fries"];
 const Menu = () => {
   // const dispatch = useDispatch();
   // const alert = useAlert();
-  const {_id} = useSelector(state=>state.user.currentUser.user)
-  console.log(_id)
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setprice] = useState([0, 5000]);
   const [ratings, setRatings] = useState(0);
@@ -38,12 +36,12 @@ const Menu = () => {
 
   const getAllProducts = async () => {
     let result = await axios.get(
-      `  http://192.168.100.29:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+      `http://192.168.2.10:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
     );
     if (category !== "") {
       let categoryLowercase = category.toLowerCase();
       result = await axios.get(
-        `http://192.168.100.29:4000/products?category=${categoryLowercase}`
+        `http://192.168.2.10:4000/products?category=${categoryLowercase}`
       );
     }
 

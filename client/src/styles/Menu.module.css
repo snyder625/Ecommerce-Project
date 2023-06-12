@@ -9,11 +9,11 @@
 }
 .menu {
   display: flex;
-  width: 70vw;
-  margin: 2vmax auto;
+  width: 65vw;
+  margin: 2vmax 25vmax;
   flex-wrap: wrap;
   max-width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
   min-height: 30vh;
   /* border: 1px solid black; */
 }
