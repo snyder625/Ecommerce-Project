@@ -5,6 +5,15 @@ const OrderTracking = () => {
 
   const navigate = useNavigate()
   const [orderId, setOrderId] = useState('')
+  const [error, setError] = useState(false);
+
+  const handleTracking = () => {
+    if (orderId.length === 24) {
+      navigate(`/orders/${orderId}`)
+    } else {
+      setError(true)
+    }
+  }
 
   return (
     <div style={{ textAlign: 'center', margin: '20px', height: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
@@ -18,11 +27,12 @@ const OrderTracking = () => {
         style={{ padding: '10px', marginRight: '10px' }}
       />
       <button
-        onClick={()=> navigate(`/orders/${orderId}`)}
+        onClick={handleTracking}
         style={{ padding: '10px 20px', backgroundColor: 'teal', color: 'white', border: 'none', cursor: 'pointer' }}
       >
         Track
       </button>
+      {error && <p style={{color: 'red'}}>Invalid Order ID</p>}
       </div>
     </div>
   );

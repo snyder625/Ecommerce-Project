@@ -6,6 +6,7 @@ const Navbar = () => {
 
   const quantity = useSelector(state=>state.cart.quantity);
   const user = useSelector(state=>state.user);
+  const userId = user.currentUser?.user?._id;
 
   return (
     <div className={styles.container}>
@@ -38,7 +39,10 @@ const Navbar = () => {
           <Link to="/contact" className={styles.link}>
             <li className={styles.listItem}>Contact</li>
           </Link>
-          {user.currentUser ? <li className={styles.listItem}>Hello, {user.currentUser.user.name}</li> 
+          {user.currentUser ? 
+          <Link to={`/myorders/${userId}`} className={styles.link}>
+            <li className={styles.listItem}>Hello, {user.currentUser.user.name}</li> 
+          </Link>
           : 
           <Link to="/login" className={styles.link}>
             <li className={styles.listItem}>Log in / sign up</li>

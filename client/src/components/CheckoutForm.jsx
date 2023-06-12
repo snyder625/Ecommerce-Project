@@ -10,18 +10,19 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
+  const cart = useSelector(state => state.cart)
+  const user = useSelector(state => state.user)
   const [message, setMessage] = useState(null);
   const dispatch = useDispatch();
   const [isProcessing, setIsProcessing] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(user.currentUser.user.name);
   const [address, setAddress] = useState("");
-  const cart = useSelector(state => state.cart)
   const total = cart.total
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post('http://localhost:4000/orders/', {customer: name, address, total, status: 0, method: 1})
+    const res = await axios.post('http://localhost:4000/orders/', {customer: name, userId: user.currentUser.user._id, address, total, status: 0, method: 1})
     dispatch(reset());
 
     if (!stripe || !elements) {
@@ -55,7 +56,7 @@ export default function CheckoutForm() {
       <h2 style={{display: 'flex', justifyContent: 'center', padding: '1rem 0'}}>Shipping Details</h2>
       <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '450px', margin: 'auto'}}>
         <label>Name</label>
-        <input placeholder="Rizwan Ahmed" onChange={(e)=> setName(e.target.value)} />
+        <input value={name} onChange={(e)=> setName(e.target.value)} />
         <label>Address</label>
         <input placeholder="Karachi" onChange={(e)=> setAddress(e.target.value)} />
       </div>

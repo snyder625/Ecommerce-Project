@@ -50,7 +50,7 @@ const OrderData = () => {
           <tr key={order._id}>
             <td>{order._id}</td>
             <td>{order.customer}</td>
-            <td>{order.total}</td>
+            <td>Rs. {order.total}</td>
             <td>{order.address}</td>
             <td>{order.method === 0 ? (<span>Cash</span>) : (<span>Paid</span>)}</td>
             <td>{status[order.status]}</td>

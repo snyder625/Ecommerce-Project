@@ -13,6 +13,7 @@ const Cart = () => {
     const [open, setOpen] = useState(false);
     const [cash, setCash] = useState(false);
     const cart = useSelector(state => state.cart);
+    const user = useSelector(state => state.user);
     const [openModel, setOpenModel] = useState(false);
     const navigate = useNavigate();
 
@@ -138,8 +139,8 @@ const Cart = () => {
                         ))}
                     </tbody>
                 </table>
-                {cart.products.length > 1 && <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
-                    <button style={{padding: '0.75rem 1rem', border: 'none', backgroundColor: 'teal', color: 'white', cursor: 'pointer'}} onClick={handleEmptyCart}>Empty Cart</button>
+                {cart.products.length > 0 && <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
+                    <button style={{padding: '0.75rem 1rem', border: 'none', backgroundColor: 'teal', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem'}} onClick={handleEmptyCart}><img src="/img/bin.png" height="20" alt="" />Empty Cart</button>
                 </div>}
             </div>
             <div className={styles.right}>
@@ -155,10 +156,10 @@ const Cart = () => {
                         <b className={styles.totalTextTitle}>Total:</b>Rs. {cart.total}
                     </div>
 
-                    {open ? (
+                    {(open && (cart.quantity.length !== 0)) ? (
                         <div className={styles.paymentMethods}>
                             <button className={styles.payButton} onClick={handleCOD}>CASH ON DELIVERY</button>
-                            <div className={styles.payButton} style={{ backgroundColor: 'white', color: '#008cdd', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={() => navigate('/payment')}><img src="/img/stripe.png" height="25" alt="" />PAY WITH STRIPE</div>
+                            <div className={styles.payButton} style={{ backgroundColor: 'white', color: '#008cdd', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }} onClick={() => navigate('/payment')}><img src="/img/stripe.png" height="20" alt="" />PAY WITH STRIPE</div>
                             <PayPalScriptProvider
                                 options={{
                                     "client-id": "test",
@@ -175,8 +176,9 @@ const Cart = () => {
                         </div>
 
                     ) : (
-                        <button className={styles.button} onClick={() => setOpen(true)}>CHECKOUT</button>
+                        <button className={styles.button} onClick={() => user.currentUser && setOpen(true)}>CHECKOUT</button>
                     )}
+                    {!user.currentUser && <p style={{display: 'flex', alignSelf: 'center', color: '#ff9966'}}>Log in to place an order</p>}
 
                 </div>
             </div>

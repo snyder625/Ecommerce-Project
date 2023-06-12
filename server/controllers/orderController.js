@@ -45,4 +45,13 @@ export const updateOrder = async (req, res) => {
 }
 
 //Get orders by user id
-export const getOrderByUser = async (req, res) => {};
+export const getOrderByUser = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const orders = await Order.find({ userId });
+        res.json(orders);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
