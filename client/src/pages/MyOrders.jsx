@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const MyOrders = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector(state=> state.user)
-  const userId = user.currentUser?.user?._id
+  const userId = user.currentUser?.user?._id;
   const [orders, setOrders] = useState([]);
   const status = ["Preparing", "On the way", "Delivered"];
+
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate("/")
+  }
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -59,7 +66,7 @@ const MyOrders = () => {
       </div>
       <div style={{display: 'flex', justifyContent: 'center', marginTop: '3rem'}}>
       <button
-        onClick={()=> dispatch(logout())}
+        onClick={handleLogout}
         style={{
           padding: '10px 20px',
           backgroundColor: 'teal',

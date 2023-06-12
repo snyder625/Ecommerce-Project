@@ -6,14 +6,14 @@ import { Cart, Dashboard, Home, Login, Menu, Product, Register, Orders, OrderTra
 import Footer from "./components/Footer";
 import NotFoundPage from "./components/Error";
 import Navbar from "./components/Navbar";
-
+import Payment from './components/Payment';
 import Contact from "./components/contactUs/Contact";
 import BlogMain from "./components/Blog/BlogMain";
 import BlogViewDetails from "./components/Blog/BlogViewDetails";
 import ScrollTop from "./scroll/ScrollTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Search from "./components/search/Search";
+// import Search from "./components/search/Search";
 
 function App() {
   const user = useSelector((state) => state.user);
