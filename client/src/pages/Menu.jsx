@@ -13,15 +13,18 @@ import { useSelector } from "react-redux";
 
 const categories = ["Pizza", "Burger", "Pasta", "Fries"];
 
-
 const Menu = () => {
   // const dispatch = useDispatch();
   // const alert = useAlert();
+  const {_id} = useSelector(state=>state.user.currentUser.user)
+  console.log(_id)
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setprice] = useState([0, 5000]);
   const [ratings, setRatings] = useState(0);
   const [category, setCategory] = useState("");
   const [productsData, setProducts] = useState([]);
+
+  const [keyword, setKeyword] = useState("");
 
   // const { products, loading, error, productsCount, resultPerPage } =
   // useSelector((state) => state.products);
@@ -41,7 +44,7 @@ const Menu = () => {
     if (category !== "") {
       let categoryLowercase = category.toLowerCase();
       result = await axios.get(
-        `http://192.168.2.10:4000/products?category=${categoryLowercase}`
+        `http://192.168.100.29:4000/products?category=${categoryLowercase}`
       );
     }
 
@@ -51,10 +54,10 @@ const Menu = () => {
 
   useEffect(() => {
     getAllProducts();
-  }, [category, price]);
+  }, [category, price, keyword]);
 
-  const keyword = useParams();
   const loading = false;
+  console.log(keyword);
 
   // useEffect(() => {
   //   // if (error) {
@@ -70,6 +73,13 @@ const Menu = () => {
         <h1>Loading</h1>
       ) : (
         <>
+          <form className={styles.searchBox}>
+            <input
+              type="text"
+              placeholder="search a product.."
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+          </form>
           <h2 className={styles.menuHeading}>Products</h2>
           <div className={styles.menu}>
             {productsData &&
@@ -104,20 +114,9 @@ const Menu = () => {
                 </option>
               ))}
             </select>
-            <fieldset>
-              <Typography>Ratings Above</Typography>
-              <Slider
-                value={ratings}
-                onChange={(e, newRating) => setRatings(newRating)}
-                aria-labelledby="continuous-slider"
-                valueLabelDisplay="auto"
-                min={0}
-                max={5}
-              />
-            </fieldset>
           </div>
 
-          {resultPerPage < productsCount && (
+          {/*resultPerPage < productsCount && (
             <div className={styles.paginationBox}>
               <Pagination
                 activePage={currentPage}
@@ -134,7 +133,7 @@ const Menu = () => {
                 activeLinkClass="pageLinkActive"
               />
             </div>
-          )}
+          )*/}
         </>
       )}
     </>
