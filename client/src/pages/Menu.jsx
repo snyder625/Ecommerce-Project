@@ -49,7 +49,7 @@ const Menu = () => {
 
   const getAllProducts = async () => {
     let result = await axios.get(
-      `http://192.168.2.10:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+      `http://192.168.100.29:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
     );
     if (category !== "") {
       let categoryLowercase = category.toLowerCase();
@@ -60,7 +60,7 @@ const Menu = () => {
     if (keyword !== "") {
       let categoryLowercase = category.toLowerCase();
       result = await axios.get(
-        `http://192.168.100.29:4000/products?keyword=${keyword}&minPrice=${price[0]}&maxPrice=${price[1]}``http://192.168.100.29:4000/products?category=${categoryLowercase}`
+        `http://192.168.100.29:4000/products?keyword=${keyword}&minPrice=${price[0]}&maxPrice=${price[1]}`
       );
     }
     if (keyword !== "" && category !== "") {
@@ -105,6 +105,11 @@ const Menu = () => {
           </form>
           <h2 className={styles.menuHeading}>Products</h2>
           <div className={styles.menu}>
+            {productsData.length == 0 && (
+              <h1 style={{ textAlign: "center", width: "70%" }}>
+                No Available Items
+              </h1>
+            )}
             {productsData &&
               productsData.map((product) => (
                 <ProductCard key={product._id} product={product} />
@@ -121,33 +126,23 @@ const Menu = () => {
               min={0}
               max={5000}
             />
-            <div className="pricesSelected">
-              <p>MinPrice:{price[0]}</p>
-              <p>MaxPrice:{price[1]}</p>
+            <div className="pricesSelected" style={{ width: "fit-content" }}>
+              <p>Min Price:{price[0]}</p>
+              <p>Max Price:{price[1]}</p>
             </div>
 
             {/* categories*/}
 
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="" key="">
-                Categories
-              </option>
-              {categories.map((cate, index) => (
-                <option key={index} value={cate}>
-                  {cate}
-                </option>
-              ))}
-            </select>
             <div>
+              <h2 style={{ marginTop: "30px", marginBottom: "6px" }}>
+                Categories
+              </h2>
               {categories.map((cate, ind) => (
                 <div key={ind} className="singleCheckBox">
                   <input
                     type="checkbox"
                     value={cate}
-                    checked={(e) => setSelectedCheckbox(e.target.value)}
+                    checked={selectedCheckbox === cate}
                     onChange={handleCheckboxChange}
                   />
                   <label>{cate}</label>
