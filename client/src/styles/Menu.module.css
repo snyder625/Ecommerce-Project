@@ -25,7 +25,7 @@
 select {
   width: 160px !important;
   height: 40px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   /* padding: 20px; */
 }
 
@@ -95,7 +95,59 @@ select {
 .filterBox > fieldset {
   border: 1px solid rgba(0, 0, 0, 0.504);
 }
+.searchBox {
+  width: 60vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.searchBox > input[type="text"] {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  background-color: white;
+  border: none;
+  color: rgba(0, 0, 0, 0.637);
+  padding: 1vmax 2vmax;
+  width: 70%;
+  outline: none;
+  border-radius: 0%;
+  font: 300 1.1vmax cursive;
+  box-sizing: border-box;
+  height: 8%;
+  margin-right: 20px;
+}
+
+input[type="submit"] {
+  height: 8%;
+  border-radius: 0%;
+  background-color: tomato;
+  border: none;
+  padding: 1vmax;
+  width: 28%;
+  font: 300 1.4vmax "Roboto";
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(86, 6, 6);
+}
+
 @media (max-width: 600px) {
+  input[type="text"] {
+    width: 100%;
+    font: 300 4vw cursive;
+    height: 10%;
+  }
+
+  input[type="submit"] {
+    height: 10%;
+    width: 30%;
+    font: 300 4vw "Roboto";
+  }
   .filterBox {
     width: 20vmax;
     position: static;

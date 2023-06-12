@@ -20,7 +20,7 @@
   margin: 20px 0;
   /* border-bottom: 1px solid #9d3c3c; */
   height: 200px;
-  box-shadow: 1px 1px 4px rgb(253, 1, 1);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 
 .blogPreview h2 {
@@ -123,55 +123,63 @@
   padding: 0px 10px;
 }
 
-@media (max-width: 574px) {
+@media (max-width: 600px) {
   .blogParadetails p {
     font-size: 16px;
     margin-left: 5px;
   }
   .bloglist {
-    width: 500px;
-    padding: 10px;
+    width: 100vw;
+    padding: 20px;
     /* margin: 0 auto; */
   }
   .blogPreview {
-    width: 280px;
-    margin-right: 100px;
+    width: 90vw;
+    /* margin-right: 100px; */
     margin-bottom: 30px;
     height: 250px;
     padding-right: 0;
-    padding-left: 40px;
+    padding-left: 0px;
+    /* text-align: center; */
   }
   .blogPreview a {
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
   }
 
   .blogPreview a .blogInfo h2 {
     font-size: 18px;
+    width: 100%;
+    text-align: center;
   }
   .blogPreview a .blogInfo p {
-    font-size: 15px;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
   }
   .blogPreview a .blogImages {
-    width: 45%;
-    height: 50%;
+    width: 90%;
+    height: 60%;
     margin-top: 20px;
   }
   .BlogViewDetails .blogViewHeader {
     display: flex;
     flex-direction: column;
-    height: 360px;
-    margin-left: 30px;
+    height: fit-content;
+    /* margin-left: 30px; */
+    width: 90vw;
   }
 
   .BlogViewDetails .blogViewHeader .blogViewHeadInfo {
-    width: 30%;
+    width: 100%;
     /* height: 100%; */
     margin-top: 30px;
   }
 
   .BlogViewDetails .blogViewHeader .blogViewHeadImg {
-    width: 25%;
+    width: 90%;
     height: 40%;
     margin-top: 0px;
   }

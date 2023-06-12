@@ -2,10 +2,20 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { Cart, Dashboard, Home, Login, Menu, Product, Register, Orders, OrderTracking } from "./pages";
+import {
+  Cart,
+  Dashboard,
+  Home,
+  Login,
+  Menu,
+  Product,
+  Register,
+  Orders,
+  OrderTracking,
+} from "./pages";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import Payment from "./components/Payment";
+
 import Contact from "./components/contactUs/Contact";
 import Payment from "./components/Payment";
 import BlogMain from "./components/Blog/BlogMain";
@@ -13,6 +23,7 @@ import BlogViewDetails from "./components/Blog/BlogViewDetails";
 import ScrollTop from "./scroll/ScrollTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Search from "./components/search/Search";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -25,6 +36,8 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:keyword" element={<Menu />} />
+
           <Route path="cart" element={<Cart />} />
           {/* <Route path="admin" element={user.currentUser.user.isAdmin && <Dashboard />} /> */}
           <Route path="/contact" element={<Contact />} />
