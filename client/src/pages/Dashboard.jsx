@@ -1,7 +1,7 @@
 import styles from '../styles/Dashboard.module.css'
 import { useState } from 'react';
-import Sidebar from '../components/Sidebar';
-import ContentArea from '../components/ContentArea';
+import Sidebar from '../components/DashboardComponents/Sidebar';
+import ContentArea from '../components/DashboardComponents/ContentArea';
 
 const Dashboard = () => {
   const [selectedOption, setSelectedOption] = useState('users');

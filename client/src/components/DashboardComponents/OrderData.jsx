@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import '../styles/UserData.css';
+import '../../styles/UserData.css';
 import axios from 'axios';
 
 const OrderData = () => {

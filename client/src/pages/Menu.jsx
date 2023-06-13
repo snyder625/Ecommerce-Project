@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useSelector } from "react-redux";
 
-const categories = ["Pizza", "Burger", "Pasta", "Fries"];
+const categories = ["Pizza", "Burger", "Side", "Dessert"];
 
 const Menu = () => {
   // const dispatch = useDispatch();
@@ -45,7 +45,7 @@ const Menu = () => {
 
   const getAllProducts = async () => {
     let result = await axios.get(
-      `http://192.168.56.1:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+      `http://192.168.2.10:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
     );
     if (category !== "") {
       let categoryLowercase = category.toLowerCase();
@@ -97,7 +97,9 @@ const Menu = () => {
               ))}
           </div>
 
+
           <div className={styles.filterBox}>
+            <h2>Filters</h2>
             <Typography>Price</Typography>
             <Slider
               value={price}
@@ -119,7 +121,7 @@ const Menu = () => {
                 Categories
               </h2>
               {categories.map((cate, ind) => (
-                <div key={ind} className="singleCheckBox">
+                <div key={ind} className="singleCheckBox" style={{display: 'flex', gap: '0.5rem', alignItems: 'baseline'}}>
                   <input
                     type="checkbox"
                     value={cate}

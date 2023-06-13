@@ -3,7 +3,6 @@ import styles from '../styles/OrderDetails.module.css'
 import { useSelector } from 'react-redux';
 import { reset } from '../redux/cartSlice';
 
-
 const OrderDetails = ({total, createOrder, setOpenModel}) => {
 
     const user = useSelector(state=>state.user)

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/UserData.css';
+import '../../styles/UserData.css';
 
-import AddButton from './AddButton';
-import Add from './Add'
+import AddButton from '../AddButton';
+import Add from '../Add'
 
 const ProductData = () => {
 
