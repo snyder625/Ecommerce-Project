@@ -38,7 +38,7 @@ const Add = ({setClose}) => {
                 title, category, desc, prices, extraOptions, img:url
             };
 
-            await axios.post("http://localhost:3000/products", newProduct);
+            await axios.post("http://localhost:4000/products", newProduct);
             setClose(true);
         } catch (error) {
             console.log(error);
