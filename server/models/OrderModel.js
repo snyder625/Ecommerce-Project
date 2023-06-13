@@ -27,6 +27,13 @@ const OrderSchema = new mongoose.Schema({
     method: {
         type: Number,
         required: true
+    },
+    isTokenized: {
+        type: Boolean,
+        default: false
+    },
+    walletAddress: {
+        type: 'string'
     }
 }, {timestamps: true});
 

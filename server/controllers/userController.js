@@ -8,7 +8,7 @@ import { sendToken } from "../utils/sendingJWTtoken.js";
 
 //singup user
 export const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, walletAddress } = req.body;
   if (!name || !email || !password) {
     return new ErrorHandler("Enter all fields", 400);
   }
@@ -25,6 +25,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password: hp,
+    walletAddress
   });
 
   if (user) {

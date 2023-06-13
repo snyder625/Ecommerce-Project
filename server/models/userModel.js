@@ -16,9 +16,11 @@ const UserSchema = new mongoose.Schema(
       type: "string",
       required: true,
     },
+    walletAddress: {
+      type: "string",
+    },
     isAdmin: {
       type: "boolean",
-
       default: false,
     },
   },

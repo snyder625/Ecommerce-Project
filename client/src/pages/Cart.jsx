@@ -156,7 +156,7 @@ const Cart = () => {
                         <b className={styles.totalTextTitle}>Total:</b>Rs. {cart.total}
                     </div>
 
-                    {(open && (cart.quantity.length !== 0)) ? (
+                    {(open && (cart.quantity.length !== 0 && cart.total > 0)) ? (
                         <div className={styles.paymentMethods}>
                             <button className={styles.payButton} onClick={handleCOD}>CASH ON DELIVERY</button>
                             <div className={styles.payButton} style={{ backgroundColor: 'white', color: '#008cdd', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }} onClick={() => navigate('/payment')}><img src="/img/stripe.png" height="20" alt="" />PAY WITH STRIPE</div>

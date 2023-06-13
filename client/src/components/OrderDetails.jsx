@@ -3,15 +3,19 @@ import styles from '../styles/OrderDetails.module.css'
 import { useSelector } from 'react-redux';
 import { reset } from '../redux/cartSlice';
 
+
 const OrderDetails = ({total, createOrder, setOpenModel}) => {
 
     const user = useSelector(state=>state.user)
+    const walletAddress = user.currentUser?.user?.walletAddress;
+    console.log(walletAddress)
 
     const [customer, setCustomer] = useState(user.currentUser ? user.currentUser.user.name : "");
     const [address, setAddress] = useState("");
 
     const handleClick = () => {
-        createOrder({customer, userId: user.currentUser.user._id, address, total, method: 0});
+        createOrder({customer, userId: user.currentUser.user._id, address, total, method: 0, walletAddress});
+        
         reset()
         setOpenModel(false)
     }

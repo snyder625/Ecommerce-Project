@@ -1,6 +1,7 @@
 import { PaymentElement } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
+import { ethers } from "ethers";
 import '../styles/CheckoutForm.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +14,7 @@ export default function CheckoutForm() {
   const cart = useSelector(state => state.cart)
   const user = useSelector(state => state.user)
   const [message, setMessage] = useState(null);
+  const [walletAddress, setWalletAdress] = useState("");
   const dispatch = useDispatch();
   const [isProcessing, setIsProcessing] = useState(false);
   const [name, setName] = useState(user.currentUser.user.name);
@@ -59,6 +61,20 @@ export default function CheckoutForm() {
         <input value={name} onChange={(e)=> setName(e.target.value)} />
         <label>Address</label>
         <input placeholder="Karachi" onChange={(e)=> setAddress(e.target.value)} />
+        {walletAddress ? (
+            <button
+              style={{ display: "block", marginBottom: "10px" }}
+            >
+              Metamask Connected!!!
+            </button>
+          ) : (
+            <button
+              style={{ display: "block", marginBottom: "10px" }}
+              onClick={handleClick}
+            >
+              Connect Wallet
+            </button>
+          )}
       </div>
       <h2 style={{display: 'flex', justifyContent: 'center', padding: '1rem 0'}}>Billing Details</h2>
       <PaymentElement id="payment-element" />

@@ -11,6 +11,7 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState("");
   const cart = useSelector(state =>state.cart);
 
+
   useEffect(() => {
     fetch("http://localhost:4000/config").then(async (r) => {
       const { publishableKey } = await r.json();

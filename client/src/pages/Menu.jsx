@@ -45,7 +45,7 @@ const Menu = () => {
 
   const getAllProducts = async () => {
     let result = await axios.get(
-      `http://192.168.2.10:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+      `http://192.168.56.1:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
     );
     if (category !== "") {
       let categoryLowercase = category.toLowerCase();
