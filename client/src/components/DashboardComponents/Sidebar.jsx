@@ -1,5 +1,5 @@
 // import React from 'react';
-import styles from '../styles/Dashboard.module.css'
+import styles from '../../styles/Dashboard.module.css'
 
 const Sidebar = ({ selectedOption, onOptionSelect }) => {
   return (
@@ -23,6 +23,12 @@ const Sidebar = ({ selectedOption, onOptionSelect }) => {
           onClick={() => onOptionSelect('orders')}
         >
           Orders
+        </li>
+        <li
+          className={selectedOption === 'rewards' ? 'selected' : ''}
+          onClick={() => onOptionSelect('rewards')}
+        >
+          Rewards
         </li>
       </ul>
     </div>

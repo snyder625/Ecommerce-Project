@@ -1,7 +1,8 @@
 import UserData from './UserData';
 import ProductData from './ProductData';
-import styles from '../styles/Dashboard.module.css'
+import styles from '../../styles/Dashboard.module.css'
 import OrderData from './OrderData';
+import RewardData from './RewardData';
 
 const ContentArea = ({ selectedOption }) => {
   return (
@@ -9,6 +10,7 @@ const ContentArea = ({ selectedOption }) => {
       {selectedOption === 'users' && <UserData />}
       {selectedOption === 'products' && <ProductData />}
       {selectedOption === 'orders' && <OrderData />}
+      {selectedOption === 'rewards' && <RewardData />}
     </div>
   );
 };
