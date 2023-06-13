@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/", getAllOrders);
 router.get("/rewardedOrders", getAllOrdersToBeRewarded);
-router.put("/rewardedOrders/:orderId", updateOrderToBeRewarded);
+router.put("/rewardedOrders/:id", updateOrderToBeRewarded);
 router.post("/", postOrder);
 router.get("/myorders/:userId", getOrderByUser);
 router.put("/:id", updateOrder);
