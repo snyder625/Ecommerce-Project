@@ -17,7 +17,7 @@ const Login = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post(
-        "http://192.168.2.10:4000/api/v1/user/login",
+        "http://192.168.100.29:4000/api/v1/user/login",
         {
           email,
           password,
