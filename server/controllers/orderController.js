@@ -38,7 +38,6 @@ export const getAllOrdersToBeRewarded = async (req, res) => {
       total: { $gte: 4000 },
       isTokenized: false,
       walletAddress: { $ne: "" },
-      isPaid: true,
     });
     res.status(200).json(orders);
   } catch (error) {

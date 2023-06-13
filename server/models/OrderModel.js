@@ -29,10 +29,7 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    isPaid: {
-      type: Boolean,
-      default: false,
-    },
+
     isTokenized: {
       type: Boolean,
       default: false,
