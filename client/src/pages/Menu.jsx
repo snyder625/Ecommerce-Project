@@ -32,6 +32,14 @@ const Menu = () => {
   const priceHandler = (event, newPrice) => {
     setprice(newPrice);
   };
+  const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+
+  const handleCheckboxChange = (event) => {
+    const checkboxValue = event.target.value.toLowerCase();
+
+    setCategory(checkboxValue);
+    console.log("Categeeery is", category);
+  };
   const resultPerPage = 10;
   const productsCount = 10;
 
@@ -78,6 +86,11 @@ const Menu = () => {
           </form>
           <h2 className={styles.menuHeading}>Products</h2>
           <div className={styles.menu}>
+            {productsData.length == 0 && (
+              <h1 style={{ textAlign: "center", width: "70%" }}>
+                No Available Items
+              </h1>
+            )}
             {productsData &&
               productsData.map((product) => (
                 <ProductCard key={product._id} product={product} />
@@ -94,22 +107,29 @@ const Menu = () => {
               min={0}
               max={5000}
             />
+            <div className="pricesSelected" style={{ width: "fit-content" }}>
+              <p>Min Price:{price[0]}</p>
+              <p>Max Price:{price[1]}</p>
+            </div>
 
             {/* categories*/}
 
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="" key="">
+            <div>
+              <h2 style={{ marginTop: "30px", marginBottom: "6px" }}>
                 Categories
-              </option>
-              {categories.map((cate, index) => (
-                <option key={index} value={cate}>
-                  {cate}
-                </option>
+              </h2>
+              {categories.map((cate, ind) => (
+                <div key={ind} className="singleCheckBox">
+                  <input
+                    type="checkbox"
+                    value={cate}
+                    checked={selectedCheckbox === cate}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label>{cate}</label>
+                </div>
               ))}
-            </select>
+            </div>
           </div>
 
           {/*resultPerPage < productsCount && (

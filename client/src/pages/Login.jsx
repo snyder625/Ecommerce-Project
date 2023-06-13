@@ -17,7 +17,7 @@ const Login = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post(
-        "http://192.168.2.10:4000/api/v1/user/login",
+        "http://192.168.100.29:4000/api/v1/user/login",
         {
           email,
           password,
@@ -27,7 +27,9 @@ const Login = () => {
       console.log(res.data);
       navigate("/");
     } catch (error) {
-      toast.error(error);
+      toast.error(error.response.data.message);
+
+      console.log("logggginnn errrror is", error);
       dispatch(loginFailure());
     }
   };

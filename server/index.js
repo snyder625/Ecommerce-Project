@@ -42,7 +42,7 @@ app.get("/config", (req, res) => {
 });
 
 app.post("/create-payment-intent", async (req, res) => {
-  const {total} = req.body;
+  const { total } = req.body;
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       currency: "USD",
@@ -51,9 +51,8 @@ app.post("/create-payment-intent", async (req, res) => {
     });
 
     res.send({
-      clientSecret: paymentIntent.client_secret
+      clientSecret: paymentIntent.client_secret,
     });
-
   } catch (e) {
     return res.status(400).send({
       error: {
@@ -66,6 +65,7 @@ app.post("/create-payment-intent", async (req, res) => {
 app.use("/api/v1", userRoute);
 app.use("/products", productRoute);
 app.use("/orders", orderRoute);
+app.use(errMiddleware);
 
 app.listen(4000, () => {
   connect();
