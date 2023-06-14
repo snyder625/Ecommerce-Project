@@ -7,7 +7,7 @@ import { BASE_URL } from "../urlHandler";
 import Typography from "@mui/material/Typography";
 import ProductCard from "../components/ProductCard";
 
-const categories = ["Pizza", "Burger", "Side", "Dessert"];
+const categories = ["All", "Pizza", "Burger", "Side", "Dessert"];
 
 const Menu = () => {
 
@@ -24,13 +24,14 @@ const Menu = () => {
   const priceHandler = (event, newPrice) => {
     setprice(newPrice);
   };
-  const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+  const [selectedCheckbox, setSelectedCheckbox] = useState("");
 
   const handleCheckboxChange = (event) => {
     const checkboxValue = event.target.value.toLowerCase();
 
-    setCategory(checkboxValue);
-    console.log("Categeeery is", category);
+    setSelectedCheckbox(checkboxValue);
+    console.log("Selected category is", checkboxValue);
+    console.log("Selected category's type is", typeof checkboxValue);
   };
 
   const resultPerPage = 10;
@@ -38,14 +39,20 @@ const Menu = () => {
 
   const getAllProducts = async () => {
     let result = await axios.get(
-      `${BASE_URL}/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+      `http://192.168.2.10:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
     );
-    if (category !== "") {
-      let categoryLowercase = category.toLowerCase();
+    if (category !== "" && category === "all") {
       result = await axios.get(
-        `${BASE_URL}/products?category=${categoryLowercase}`
+        `http://192.168.43.83:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
       );
     }
+    if (category !== "" && category != "all") {
+      let categoryLowercase = category.toLowerCase();
+      result = await axios.get(
+        `http://192.168.2.10:4000/products?category=${categoryLowercase}`
+      );
+    }
+    console.log("result" + result);
     setProducts(result.data.products);
   };
 
@@ -82,7 +89,6 @@ const Menu = () => {
               ))}
           </div>
 
-
           <div className={styles.filterBox}>
             <h2>Filters</h2>
             <Typography>Price</Typography>
@@ -106,11 +112,20 @@ const Menu = () => {
                 Categories
               </h2>
               {categories.map((cate, ind) => (
-                <div key={ind} className="singleCheckBox" style={{display: 'flex', gap: '0.5rem', alignItems: 'baseline'}}>
+                <div
+                  key={ind}
+                  className="singleCheckBox"
+                  style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    alignItems: "baseline",
+                  }}
+                >
                   <input
                     type="checkbox"
                     value={cate}
                     onChange={handleCheckboxChange}
+                    checked={selectedCheckbox === cate.toLowerCase()}
                   />
                   <label>{cate}</label>
                 </div>
