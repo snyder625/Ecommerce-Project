@@ -5,6 +5,7 @@ import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../urlHandler";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const Login = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post(
-        "http://192.168.100.29:4000/api/v1/user/login",
+        `${BASE_URL}/api/v1/user/login`,
         {
           email,
           password,

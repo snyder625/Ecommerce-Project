@@ -80,8 +80,8 @@ const RewardData = () => {
         Rewards
       </h2>
       {wallet ? (
-        <button style={{ display: "block", marginBottom: "10px" }}>
-          Metamask Connected!!!
+        <button disabled style={{ display: "block", marginBottom: "10px", alignItems: "center", backgroundColor: '#000', color: '#fff', padding: '0.5rem', borderRadius: '3px' }}>
+          Metamask Connected
         </button>
       ) : (
         <button
@@ -110,8 +110,7 @@ const RewardData = () => {
             <th>ID</th>
             <th>Customer Name</th>
             <th>Total</th>
-            <th>Address</th>
-            <th>Tokenized?</th>
+            <th>Wallet Address</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -121,15 +120,15 @@ const RewardData = () => {
               <td>{order._id}</td>
               <td>{order.customer}</td>
               <td>Rs. {order.total}</td>
-              <td>{order.address}</td>
-              <td>{order.isTokenized}</td>
+              <td>{order.walletAddress}</td>
               <td>
                 <button
+                  style={{backgroundColor: '#0f9675', color: '#fff', border: 'none', padding: '6px 10px', cursor: 'pointer'}}
                   onClick={() =>
                     handleToken(order._id, order.walletAddress, order.total)
                   }
                 >
-                  Breaking
+                  Reward Tokens
                 </button>
               </td>
             </tr>

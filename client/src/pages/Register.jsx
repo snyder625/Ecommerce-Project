@@ -3,6 +3,7 @@ import "../styles/Register.css";
 import axios from "axios";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../urlHandler";
 
 const Register = () => {
   const [name, setName] = useState();
@@ -49,7 +50,7 @@ const Register = () => {
         walletAddress
       };
 
-      await axios.post("http://192.168.56.1:4000/api/v1/user/new", newUser);
+      await axios.post(`${BASE_URL}/api/v1/user/new`, newUser);
 
       navigate("/cart");
     } catch (error) {
@@ -79,10 +80,10 @@ const Register = () => {
           />
           <input type="password" placeholder="Confirm Password" />
           {walletAddress ? (
-            <button
-              style={{ display: "block", marginBottom: "10px" }}
+            <button disabled
+              style={{ display: "block", marginBottom: "10px", alignItems: "center", backgroundColor: '#000', color: '#fff', padding: '0.5rem', borderRadius: '3px' }}
             >
-              Metamask Connected!!!
+              Metamask Connected
             </button>
           ) : (
             <button

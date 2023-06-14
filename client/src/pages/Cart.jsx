@@ -159,7 +159,7 @@ const Cart = () => {
                     {(open && (cart.quantity.length !== 0 && cart.total > 0)) ? (
                         <div className={styles.paymentMethods}>
                             <button className={styles.payButton} onClick={handleCOD}>CASH ON DELIVERY</button>
-                            <div className={styles.payButton} style={{ backgroundColor: 'white', color: '#008cdd', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }} onClick={() => navigate('/payment')}><img src="/img/stripe.png" height="20" alt="" />PAY WITH STRIPE</div>
+                            <div className={styles.stripePayButton} style={{ backgroundColor: 'white', color: '#008cdd', display: 'flex', justifyContent: 'center' }} onClick={() => navigate('/payment')}><img src="/img/stripe.png" height="40" alt="" /></div>
                             <PayPalScriptProvider
                                 options={{
                                     "client-id": "test",

@@ -1,9 +1,12 @@
 import styles from "../styles/ProductCard.module.css"; // Import the CSS file for styling
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addProduct } from "../redux/cartSlice";
 
 const ProductCard = ({ product }) => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleButtonClick = (id) => {
     navigate(`/products/${id}`);
@@ -39,7 +42,7 @@ const ProductCard = ({ product }) => {
                 marginBottom: 10,
               }}
             >
-              <button className={styles.cartButton} onClick={() => handleButtonClick(product._id)}>{product.category === "pizza" ? "Customize" : "Add to Cart"}</button>
+              <button className={styles.cartButton} onClick={() => handleButtonClick(product._id)}>{product.category === "pizza" ? 'Customize' : 'Add To Cart'}</button>
             </div> 
           </div>
         </>
