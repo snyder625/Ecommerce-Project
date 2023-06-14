@@ -39,17 +39,17 @@ const Menu = () => {
 
   const getAllProducts = async () => {
     let result = await axios.get(
-      `http://192.168.2.10:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+      `${BASE_URL}/products?minPrice=${price[0]}&maxPrice=${price[1]}`
     );
     if (category !== "" && category === "all") {
       result = await axios.get(
-        `http://192.168.43.83:4000/products?minPrice=${price[0]}&maxPrice=${price[1]}`
+        `${BASE_URL}/products?minPrice=${price[0]}&maxPrice=${price[1]}`
       );
     }
     if (category !== "" && category != "all") {
       let categoryLowercase = category.toLowerCase();
       result = await axios.get(
-        `http://192.168.2.10:4000/products?category=${categoryLowercase}`
+        `${BASE_URL}/products?category=${categoryLowercase}`
       );
     }
     console.log("result" + result);
