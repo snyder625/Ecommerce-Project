@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import '../../styles/UserData.css';
 import axios from 'axios';
+import { BASE_URL } from '../../urlHandler';
 
 const UserData = () => {
   const [users, setUsers] = useState([]);
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://192.168.2.10:4000/api/v1/user/${id}`);
+      await axios.delete(`{BASE_URL}/api/v1/user/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error(error);
@@ -17,7 +18,7 @@ const UserData = () => {
   useEffect(()=> {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://192.168.2.10:4000/api/v1/user/all");
+        const response = await axios.get(`${BASE_URL}/api/v1/user/all`);
         setUsers(response.data);
       } catch (error) {
         console.error(error);

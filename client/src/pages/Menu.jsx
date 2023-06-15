@@ -38,6 +38,7 @@ const Menu = () => {
   const handleCheckboxChange = (event) => {
     const checkboxValue = event.target.value.toLowerCase();
 
+    setCategory(checkboxValue);
     setSelectedCheckbox(checkboxValue);
     console.log("Selected category is", checkboxValue);
     console.log("Selected category's type is", typeof checkboxValue);

@@ -22,7 +22,7 @@ export default function CheckoutForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post('http://localhost:4000/orders/', {customer: name, userId: user.currentUser.user._id, address, total, status: 0, method: 1})
+    const res = await axios.post('http://localhost:4000/orders/', {customer: name, userId: user.currentUser.user._id, address, walletAddress: user.currentUser.user.walletAddress, total, status: 0, method: 1})
     dispatch(reset());
 
     if (!stripe || !elements) {

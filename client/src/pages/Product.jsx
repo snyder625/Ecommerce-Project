@@ -77,9 +77,10 @@ const Product = () => {
             <h1 className={styles.title}>{pizza.title}</h1>
             <span className={styles.price}>Rs. {price}</span>
             <p className={styles.desc}>{pizza.desc}</p>
-            <h3 className={styles.choose}>Choose the size:</h3>
+            {Product.category === "pizza" && <h3 className={styles.choose}>Choose the size:</h3>}
 
-            <div className={styles.sizes}>
+            {Product.category === "pizza" &&
+                <div className={styles.sizes}>
                 <div className={styles.size} onClick={()=>handleSize(0)} >
                     <img src="/img/size.png" alt="" style={{width: '100%'}} />
                     <span className={styles.number}>Small</span>
@@ -92,7 +93,7 @@ const Product = () => {
                     <img src="/img/size.png" alt="" style={{width: '100%'}} />
                     <span className={styles.number}>Large</span>
                 </div>
-            </div>
+            </div>}
             <h3 className={styles.choose}>Choose additional ingredients: </h3>
             <div className={styles.ingredients}>
             {extraOptions.map((option)=>(

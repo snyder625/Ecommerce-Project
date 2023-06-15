@@ -176,7 +176,7 @@ const Cart = () => {
                         </div>
 
                     ) : (
-                        <button className={styles.button} onClick={() => user.currentUser && setOpen(true)}>CHECKOUT</button>
+                        <button className={styles.button} onClick={() => !user.currentUser ? navigate('/login') : setOpen(true)}>CHECKOUT</button>
                     )}
                     {!user.currentUser && <p style={{display: 'flex', alignSelf: 'center', color: '#ff9966'}}>Log in to place an order</p>}
 
